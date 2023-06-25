@@ -3,8 +3,16 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import {SignInRequestBody} from "@backend/types/authentication.type"
+
 function App() {
   const [count, setCount] = useState(0)
+  
+  const item : SignInRequestBody = {
+    email: "sd",
+    password: "sds"
+  }
+  console.log(item)
 
   return (
     <>

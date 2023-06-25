@@ -18,8 +18,9 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {"@backend/*": ["../backend/src/*"]} /*allowing common types import from backend*/
   },
-  "include": ["src"],
+  "include": ["src"], 
   "references": [{ "path": "./tsconfig.node.json" }]
 }
