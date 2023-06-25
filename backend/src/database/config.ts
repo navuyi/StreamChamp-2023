@@ -1,9 +1,10 @@
 import { Sequelize } from "sequelize";
-import * as path from "path"
+import * as process from "process"
 
+const storage = process.env.DB_STORAGE || "database.sqlite"
 const db = new Sequelize({
     dialect: "sqlite",
-    storage: "database.sqlite",
+    storage: storage,
     logging: false
 })
 

@@ -6,7 +6,7 @@ import db from "../database/config"
 
 describe("POST /streamers", () => {
 
-    afterAll(async () => {
+    beforeAll(async () => {
         await db.sync({force: true})
     })
 

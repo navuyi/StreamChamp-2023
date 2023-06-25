@@ -12,7 +12,6 @@ const postStreamer = async (req:Request, res:Response, next:NextFunction) => {
     // Add streamer to database
     const body = req.body as CreateStreamerRequestBody
     await Streamer.create(body)
-    console.log(body)
     res.status(201).json({
         msg: "Streamer created"
     })
