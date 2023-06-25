@@ -15,7 +15,8 @@ export class App {
     public init = async () : Promise<Application> => {
         this.app = express()
         // Database
-        db.sync(process.env.NODE_ENV==="test" ? {force: true} : {alter: true})
+        await db.sync({force: true})//db.sync(process.env.NODE_ENV==="test" ? {force: true} : {force: true})
+
         // Cors
         this.app.use(cors({
             origin: ["TODO"]
@@ -38,6 +39,10 @@ export class App {
         
         return this.app
     }
+
+    public getApp = () : Application => {
+        return this.app
+    } 
 
     public close = async () => {
         this.server.close()
