@@ -1,7 +1,19 @@
-import { Sequelize, DataTypes, Model, NOW } from "sequelize";
+import { DataTypes, Model, NOW } from "sequelize";
 import db from "../config";
 
-export class Streamer extends Model{}
+export interface IStreamer {
+    id: number,
+    firstName: string,
+    lastName: string,
+    upvotes: number,
+    downvotes: number,
+    description: string,
+    nickname: string,
+    platform: string,
+    profilePicturePath: string | null
+}
+
+export class Streamer extends Model<IStreamer>{}
 
 Streamer.init({
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
