@@ -1,8 +1,7 @@
+
 import { App } from "..";
 
-
-let app : App
-
+export let app : App
 
 beforeAll((done) => {
   app = new App()
@@ -18,6 +17,9 @@ describe("test", () => {
       expect(1).toBe(1)
   })
 })
+
+
+
 
 
 
