@@ -19,6 +19,7 @@ export const streamerValidator = [
         if(foundStreamer != null){
             throw new Error(`Streamer ${value} already exists`)
         }
+        return true
     }).withMessage("Streamer with provided nickname already exists")
     
 ]

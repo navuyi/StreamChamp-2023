@@ -1,11 +1,14 @@
 import * as express from "express"
 import * as cors from "cors"
 import * as process from "process"
-import urlRouter from "./routes/url"
-import streamerRouter from "./routes/streamer"
+
 import { Application } from "express"
 import * as http from "http"
 import db from "./database/config"
+
+import urlRouter from "./routes/url"
+import streamerRouter from "./routes/streamer"
+import authRouter from "./routes/authentication"
 
 
 export class App {
@@ -27,6 +30,7 @@ export class App {
         // Endpoints
         this.app.use("/yt", urlRouter)
         this.app.use("/streamers", streamerRouter)
+        this.app.use("/auth/", authRouter)
         // ... 
         // ...
 

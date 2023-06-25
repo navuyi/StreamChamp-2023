@@ -3,10 +3,10 @@ import db from "../config";
 
 
 export interface IUser {
-    id: number,
-    firstName: string,
-    lastName: string,
-    email: string,
+    id: number
+    firstName: string
+    lastName: string
+    email: string
     password: string
 }
 
