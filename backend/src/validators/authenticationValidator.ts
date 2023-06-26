@@ -26,3 +26,16 @@ export const signUpValidator = [
         }
     }).withMessage("Account already exists")
 ]
+
+export const  signInValidator = [
+    body("email").trim().notEmpty().isEmail().withMessage("Email address is not valid or empty"),
+    body("password").trim().notEmpty().withMessage("Password is required"),
+
+    body("email").custom(async (value:string) => {
+        const user = await User.findOne({where: {email: value}})
+        if(!user){
+            throw new Error("Account with provided email does not exist")
+        }
+        return true
+    }).withMessage("Account with provided email does not exist")
+]

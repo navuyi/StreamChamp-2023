@@ -7,15 +7,17 @@ import { CustomError } from "../utils/CustomError";
 const postStreamer = async (req:Request, res:Response, next:NextFunction) => {
     const errors = validationResult(req)
     if(!errors.isEmpty()){
-        const error = new CustomError("Validation failed, data is invalid")
-        error.statusCode = 400
-        error.data = errors.array()
+        const error = new CustomError("Validation failed, data is invalid", 400, errors.array())
         return next(error)
     }
-    // Add streamer to database
-    const body = req.body as CreateStreamerRequestBody
-    await Streamer.create(body)
-    res.status(201).json({msg: "Streamer added"})
+    try{
+        const body = req.body as CreateStreamerRequestBody
+        await Streamer.create(body)
+        res.status(201).json({msg: "Streamer added"})
+    }catch(err:any){
+        const error = new CustomError(err.message, 500)
+        return next(error)
+    }
 }
 
 const getStreamer = async (req:Request, res:Response, next:NextFunction) => {

@@ -1,11 +1,11 @@
 import { Router } from "express";
 import * as authController from "../controllers/authentication"
-import { signUpValidator } from "../validators/authenticationValidator";
+import { signInValidator, signUpValidator } from "../validators/authenticationValidator";
 
 
 const router = Router()
 
-router.post("/signin", authController.signIn)
+router.post("/signin", signInValidator, authController.signIn)
 router.post("/signup", signUpValidator, authController.signUp)
 
 
