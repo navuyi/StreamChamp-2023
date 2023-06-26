@@ -5,6 +5,7 @@ import { NextFunction } from "express"
 import { validationResult } from "express-validator"
 import { User } from "../database/models/User"
 import * as bcrypt from "bcrypt"
+import * as jwt from "jsonwebtoken"
 import { CustomError } from "../utils/CustomError"
 
 const signIn = async (req:Request, res:Response, next:NextFunction) => {
@@ -16,13 +17,18 @@ const signIn = async (req:Request, res:Response, next:NextFunction) => {
     try{
         const body = req.body as SignInRequestBody
         const user = await User.findOne({where: {email: body.email}}) // email existing checked in validation
-        const passwordMatch = await bcrypt.compare(body.password, user.get().password)
+        const passwordMatch = await bcrypt.compare(body.password, user.password)
         if(!passwordMatch){
             return next(new CustomError("Wrong password", 401))
         }
-        //TODO Generate JSON Web Token
+        
+        const token = jwt.sign({email: user.email, userID: user.id}, 'secret-key', {expiresIn: "1h"})
+        res.status(200).json({
+            token: token,
+            userID: user.id
+        })
     }catch(err){
-
+        return next(new CustomError(err.message, 500))
     }
 }
 

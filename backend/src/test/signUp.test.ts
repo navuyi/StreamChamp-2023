@@ -3,7 +3,7 @@ import { SignUpRequestBody } from "../types/authentication.type"
 import * as request from "supertest"
 import { app } from "./index.test"
 
-describe("tests signup endpoint", () => {
+describe("POST /auth/signup", () => {
     beforeAll(async () => {
         await db.sync({force: true})
     })
