@@ -133,3 +133,4 @@ dist
 
 ./backend/database.sqlite
 database.sqlite
+*.sqlite
