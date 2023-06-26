@@ -52,7 +52,13 @@ describe("tests signup endpoint", () => {
             password: "cisco123",
             passwordRepeat: "cisco"
         }
-        const res = await request(app.getApp()).post("/auth/signup").send(data)
+        // Email without @
+        let res = await request(app.getApp()).post("/auth/signup").send(data)
+        expect(res.statusCode).toEqual(400)
+
+        // Forgot . at the end
+        data.email = "emilburnt@gmailcom"
+        res = await request(app.getApp()).post("/auth/signup").send(data)
         expect(res.statusCode).toEqual(400)
     })
 })
