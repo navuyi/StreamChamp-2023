@@ -21,11 +21,29 @@ const postStreamer = async (req:Request, res:Response, next:NextFunction) => {
 }
 
 const getStreamer = async (req:Request, res:Response, next:NextFunction) => {
+    // TODO pagination
     const data = await Streamer.findAll()
     res.json(data)
 }
 
+const getStreamerWithID = async (req:Request, res:Response, next:NextFunction) => {
+    const errors = validationResult(req)
+    if(!errors.isEmpty()) return next(new CustomError("Parameters incorrect", 400, errors.array()))
+
+    try{
+        const id = req.params.id
+        const streamer = await Streamer.findByPk(id)
+        if(!streamer) return next(new CustomError(`Streamer with ID: ${id} does not exist`, 404));
+        
+        res.status(200).json(streamer.get())
+    }
+    catch(err){
+        return next(new CustomError(err.message, 500))
+    }
+}
+
 export {
     postStreamer,
-    getStreamer
+    getStreamer,
+    getStreamerWithID
 }

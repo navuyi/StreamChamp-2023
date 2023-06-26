@@ -1,8 +1,8 @@
-import { body } from "express-validator"
+import { body, param } from "express-validator"
 import { Sequelize } from "sequelize";
 import { Streamer } from "../database/models/Streamer";
 
-export const streamerValidator = [
+export const createStreamerValidator = [
     body("nickname").trim().notEmpty().withMessage("Nickname is required"),
     body("firstName").trim().notEmpty().withMessage("First name is required"),
     body("lastName").trim().notEmpty().withMessage("First name is required"),
@@ -21,5 +21,9 @@ export const streamerValidator = [
         }
         return true
     }).withMessage("Streamer with provided nickname already exists")   
+]
+
+export const getStreamerWithIDValidator =[
+    param("id").trim().notEmpty().isInt().withMessage("Streamer ID is incorrect")
 ]
 
