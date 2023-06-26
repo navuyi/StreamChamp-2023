@@ -10,7 +10,12 @@ export interface IVote {
     streamerID: number
 }
 
-export class Vote extends Model<IVote>{}
+export class Vote extends Model<IVote>{
+    declare id: number
+    declare value: "upvote" | "downvote"
+    declare userID: number
+    declare streamerID: number
+}
 
 Vote.init({
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},

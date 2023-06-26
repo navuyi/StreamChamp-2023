@@ -2,18 +2,28 @@ import { DataTypes, Model, NOW } from "sequelize";
 import db from "../config";
 
 export interface IStreamer {
-    id: number,
-    firstName: string,
-    lastName: string,
-    upvotes: number,
-    downvotes: number,
-    description: string,
-    nickname: string,
-    platform: string,
+    id: number
+    firstName: string
+    lastName: string
+    upvotes: number
+    downvotes: number
+    description: string
+    nickname: string
+    platform: string
     profilePicturePath: string | null
 }
 
-export class Streamer extends Model<IStreamer>{}
+export class Streamer extends Model<IStreamer>{
+    declare id: number
+    declare firstName: string
+    declare lastName: string
+    declare upvotes: number
+    declare downvotes: number
+    declare description: string
+    declare nickname: string
+    declare platform: string
+    declare profilePicturePath: string | null
+}
 
 Streamer.init({
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
