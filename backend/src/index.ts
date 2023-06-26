@@ -9,7 +9,8 @@ import db from "./database/config"
 import urlRouter from "./routes/url"
 import streamerRouter from "./routes/streamer"
 import authRouter from "./routes/authentication"
-
+import { CustomError } from "./utils/CustomError"
+import { Request, Response, NextFunction } from "express"
 
 export class App {
     private app: Application | null = null
@@ -26,6 +27,14 @@ export class App {
         }))
         // Request body parser
         this.app.use(express.json())
+
+        // Global error handling
+        this.app.use((error:CustomError, req:Request, res:Response, next:express.NextFunction) => {
+            res.status(error.statusCode || 500).json({
+                msg: error.message,
+                data: error.data
+            })
+        })
 
         // Endpoints
         this.app.use("/yt", urlRouter)

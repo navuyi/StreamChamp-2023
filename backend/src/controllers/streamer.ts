@@ -2,12 +2,15 @@ import { Request, Response, NextFunction } from "express";
 import { CreateStreamerRequestBody } from "../types/streamer.type";
 import { validationResult } from "express-validator";
 import { Streamer } from "../database/models/Streamer";
+import { CustomError } from "../utils/CustomError";
 
 const postStreamer = async (req:Request, res:Response, next:NextFunction) => {
     const errors = validationResult(req)
     if(!errors.isEmpty()){
-        res.status(400).json(errors)
-        return
+        const error = new CustomError("Validation failed, data is invalid")
+        error.statusCode = 400
+        error.data = errors.array()
+        return next(error)
     }
     // Add streamer to database
     const body = req.body as CreateStreamerRequestBody
