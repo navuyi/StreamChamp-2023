@@ -1,11 +1,11 @@
 import { Router } from "express";
 import * as streamerController from "../controllers/streamer"
-import { createStreamerValidator, getStreamerWithIDValidator} from "../validators/streamerValidator";
+import { createStreamerValidator, getStreamerValidator} from "../validators/streamerValidator";
 
 const router = Router()
 
 router.post("/", createStreamerValidator, streamerController.postStreamer)
-router.get("/page/:page", streamerController.getStreamer)
-router.get("/:id", getStreamerWithIDValidator, streamerController.getStreamerWithID)
+router.get("/page/:page", streamerController.getStreamers)
+router.get("/:id", getStreamerValidator, streamerController.getStreamer)
 
 export default router

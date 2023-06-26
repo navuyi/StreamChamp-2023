@@ -23,7 +23,11 @@ export const createStreamerValidator = [
     }).withMessage("Streamer with provided nickname already exists")   
 ]
 
-export const getStreamerWithIDValidator =[
+export const getStreamerValidator =[
     param("id").trim().notEmpty().isInt().withMessage("Streamer ID is incorrect")
+]
+
+export const getStreamersValidator = [
+    param("page").trim().notEmpty().isInt().withMessage("Page number is incorrect")
 ]
 

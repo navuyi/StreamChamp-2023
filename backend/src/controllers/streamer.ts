@@ -21,7 +21,11 @@ const postStreamer = async (req:Request, res:Response, next:NextFunction) => {
     }
 }
 
-const getStreamer = async (req:Request, res:Response, next:NextFunction) => {
+const getStreamers = async (req:Request, res:Response, next:NextFunction) => {
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        return next(new CustomError("Validation error", 400, errors.array()))
+    }
     const page = Number(req.params.page) || 1
     const perPage = 5
     try{
@@ -39,7 +43,7 @@ const getStreamer = async (req:Request, res:Response, next:NextFunction) => {
     }
 }
 
-const getStreamerWithID = async (req:Request, res:Response, next:NextFunction) => {
+const getStreamer = async (req:Request, res:Response, next:NextFunction) => {
     const errors = validationResult(req)
     if(!errors.isEmpty()){
         return next(new CustomError("Parameters incorrect", 400, errors.array()))
@@ -59,6 +63,6 @@ const getStreamerWithID = async (req:Request, res:Response, next:NextFunction) =
 
 export {
     postStreamer,
-    getStreamer,
-    getStreamerWithID
+    getStreamers,
+    getStreamer
 }
