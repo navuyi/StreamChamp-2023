@@ -7,6 +7,14 @@ export const Colors = {
     dark: "#1B1D21"
 }
 
+// Note - font-faces are defined in src/index.css
+export const Fonts = {
+    PoppinsLight: "poppins-light",
+    PoppinsMedium: "poppins-medium",
+    PoppinsRegular: "poppins-regular",
+    PoppinsBold: "poppins-bold",
+}
+
 export const fullViewport = css({
     width: "100%",
     minHeight: "100vh",
