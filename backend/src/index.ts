@@ -11,6 +11,7 @@ import streamerRouter from "./routes/streamer"
 import authRouter from "./routes/authentication"
 import { CustomError } from "./utils/CustomError"
 import { Request, Response, NextFunction } from "express"
+import { ErrorResponseBody } from "./types/common"
 
 export class App {
     private app: Application | null = null
@@ -28,13 +29,6 @@ export class App {
         // Request body parser
         this.app.use(express.json())
 
-        // Global error handling
-        this.app.use((error:CustomError, req:Request, res:Response, next:express.NextFunction) => {
-            res.status(error.statusCode || 500).json({
-                msg: error.message,
-                data: error.data
-            })
-        })
 
         // Endpoints
         this.app.use("/yt", urlRouter)
@@ -43,6 +37,14 @@ export class App {
         // ... 
         // ...
 
+        // Global error handling
+        this.app.use((error:CustomError, req:Request, res:Response, next:express.NextFunction) => {
+            const body : ErrorResponseBody = {
+                message: error.message,
+                data: error.data
+            }
+            res.status(error.statusCode || 500).json(body)
+        })
 
         // Start http server
         const PORT = process.env.NODE_PORT || 8080;
