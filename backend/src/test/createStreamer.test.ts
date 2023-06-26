@@ -26,7 +26,7 @@ describe("POST /streamers", () => {
         const data : CreateStreamerRequestBody = {
             firstName: "Felix",
             lastName: "Langyel",
-            nickname: "xQc",
+            nickname: "XQC",
             platform: "[Twitch, Kick]",
             description: "Sint nisi consectetur esse dolore tempor quis adipisicing adipisicing ex aute"
         }

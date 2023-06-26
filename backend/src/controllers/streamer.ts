@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-import { CreateStreamerRequestBody } from "../types/streamer.type";
+import { CreateStreamerRequestBody, GetStreamersResponseBody } from "../types/streamer.type";
 import { validationResult } from "express-validator";
 import { Streamer } from "../database/models/Streamer";
 import { CustomError } from "../utils/CustomError";
+
 
 const postStreamer = async (req:Request, res:Response, next:NextFunction) => {
     const errors = validationResult(req)
@@ -21,14 +22,28 @@ const postStreamer = async (req:Request, res:Response, next:NextFunction) => {
 }
 
 const getStreamer = async (req:Request, res:Response, next:NextFunction) => {
-    // TODO pagination
-    const data = await Streamer.findAll()
-    res.json(data)
+    const page = Number(req.params.page) || 1
+    const perPage = 5
+    try{
+        const totalItems = await Streamer.count()
+        const offset = perPage*(page-1)
+        const items = await Streamer.findAll({offset: offset, limit: perPage})
+
+        const data : GetStreamersResponseBody = {
+            streamers: items,
+            lastPage: Math.ceil(totalItems/perPage)
+        }
+        res.status(200).json(data)
+    }catch(err){
+        return next(new CustomError(err.message, 500))
+    }
 }
 
 const getStreamerWithID = async (req:Request, res:Response, next:NextFunction) => {
     const errors = validationResult(req)
-    if(!errors.isEmpty()) return next(new CustomError("Parameters incorrect", 400, errors.array()))
+    if(!errors.isEmpty()){
+        return next(new CustomError("Parameters incorrect", 400, errors.array()))
+    }
 
     try{
         const id = req.params.id
