@@ -20,7 +20,7 @@ export class App {
     public init = async () : Promise<Application> => {
         this.app = express()
         // Database
-        await db.sync(process.env.NODE_ENV==="test" ? {force: true} : {alter: true})
+        await db.sync(process.env.NODE_ENV==="test" ? {force: true} : {force: true})
 
         // Cors
         this.app.use(cors({
