@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { CreateStreamerRequestBody, GetStreamersResponseBody } from "../types/streamer.type";
 import { validationResult } from "express-validator";
-import { Streamer } from "../database/models/Streamer";
+import { IStreamer, Streamer } from "../database/models/Streamer";
 import { CustomError } from "../utils/CustomError";
 
 
@@ -13,7 +13,8 @@ const postStreamer = async (req:Request, res:Response, next:NextFunction) => {
     }
     try{
         const body = req.body as CreateStreamerRequestBody
-        await Streamer.create(body)
+        const data = {...body, platform: JSON.stringify(body.platform)}
+        await Streamer.create(data)
         res.status(201).json({msg: "Streamer added"})
     }catch(err:any){
         const error = new CustomError(err.message, 500)

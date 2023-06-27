@@ -1,6 +1,7 @@
 import { body, param } from "express-validator"
 import { Sequelize } from "sequelize";
 import { Streamer } from "../database/models/Streamer";
+import { AvailableStreamingPlatforms, StreamingPlatform } from "../types/streamer.type";
 
 export const createStreamerValidator = [
     body("nickname").trim().notEmpty().withMessage("Nickname is required"),
@@ -8,6 +9,12 @@ export const createStreamerValidator = [
     body("lastName").trim().notEmpty().withMessage("First name is required"),
     body("description").trim().notEmpty().withMessage("Description is required"),
     body("description").isLength({max: 2048}).withMessage("Description must be shorter than 2048 characters"),
+    body("platform").isArray({min: 1}).withMessage("At least one streaming platform must be provided").custom((arr:string[]) => {
+        if(arr.some(item => AvailableStreamingPlatforms.includes(item as StreamingPlatform) === false)){
+            throw new Error("Incorrect streaming platform")
+        } 
+        return true
+    }).withMessage("Streaming platform is incorrect"),
 
     body("nickname").custom(async (value:string) => {
         const foundStreamer = await Streamer.findOne({

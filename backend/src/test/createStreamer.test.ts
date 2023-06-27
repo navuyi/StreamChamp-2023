@@ -15,7 +15,7 @@ describe("POST /streamers", () => {
             firstName: "Felix",
             lastName: "Langyel",
             nickname: "xqc",
-            platform: "[Twitch, Kick]",
+            platform: ["Twitch", "Kick"],
             description: "Sint nisi consectetur esse dolore tempor quis adipisicing adipisicing ex aute"
         }
         const res = await request(app.getApp()).post("/streamers").send(data)
@@ -27,7 +27,7 @@ describe("POST /streamers", () => {
             firstName: "Felix",
             lastName: "Langyel",
             nickname: "XQC",
-            platform: "[Twitch, Kick]",
+            platform: ["Twitch", "Kick"],
             description: "Sint nisi consectetur esse dolore tempor quis adipisicing adipisicing ex aute"
         }
         const res = await request(app.getApp()).post("/streamers").send(data)
@@ -39,7 +39,7 @@ describe("POST /streamers", () => {
             firstName: "Felix",
             lastName: "Langyel",
             nickname: "",
-            platform: "[Twitch, Kick]",
+            platform: ["Twitch", "Kick"],
             description: "Sint nisi consectetur esse dolore tempor quis adipisicing adipisicing ex aute"
         }
 
@@ -57,7 +57,7 @@ describe("POST /streamers", () => {
             firstName: "Forsen",
             lastName: "Fors",
             nickname: "forsen",
-            platform: "[Twitch]",
+            platform: ["Twitch"],
             description: "Aliqua est sint nisi aliqua ex cillum dolor consectetur nostrud quis dolor."
         }
         const res = await request(app.getApp()).post("/streamers").send(data)
