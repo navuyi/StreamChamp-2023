@@ -1,11 +1,11 @@
 import Navbar from "../../components/Navbar/Navbar"
-import { fullViewport } from "../../config/style"
+import style from "./style.module.scss"
 
 
 const Landing = () => {
 
   return(
-    <div css={[fullViewport]}> 
+    <div className={style.container}> 
       <Navbar />
     </div>
   )

@@ -1,0 +1,5 @@
+@import "../../config/style.config.scss";
+
+.container{
+    @include full-viewport;
+}

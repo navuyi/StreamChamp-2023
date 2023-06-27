@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
+    //"jsxImportSource": "@emotion/react", // <-- required to use emotion
 
     /* Linting */
     "strict": true,

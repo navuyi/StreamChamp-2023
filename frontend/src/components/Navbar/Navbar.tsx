@@ -1,12 +1,12 @@
 
-import { styles } from "./style"
-
+import Dropdown from "../Dropdown/Dropdown"
+import style from "./style.module.scss"
 
 const Navbar = () => {
     return(
-        <div css={styles.container}>
-            <div css={styles.button}></div>
-            <header css={styles.header}>StreamChamp</header>
+        <div className={style.navbar}>
+            <Dropdown />
+            <span className={style.header}>StreamChamp</span>
         </div>
     )
 }

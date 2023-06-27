@@ -1,2 +1,2 @@
 /// <reference types="vite/client" />
-/// <reference types="@emotion/react/types/css-prop" />
+/// //<reference types="@emotion/react/types/css-prop" /> // <-- required to use emotion

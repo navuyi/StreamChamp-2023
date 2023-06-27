@@ -16,24 +16,6 @@ body{
     margin: 0;
 }
 
-/* Fonts */
-@font-face {
-    font-family: poppins-light;
-    src: url("./assets/fonts/Poppins/Poppins-Light.ttf");
-}
-@font-face {
-    font-family: poppins-regular;
-    src: url("./assets/fonts/Poppins/Poppins-Regular.ttf");
-}
-@font-face {
-    font-family: poppins-Medium;
-    src: url("./assets/fonts/Poppins/Poppins-Medium.ttf");
-}
-@font-face {
-    font-family: poppins-semibold;
-    src: url("./assets/fonts/Poppins/Poppins-SemiBold.ttf");
-}
-@font-face {
-    font-family: poppins-bold;
-    src: url("./assets/fonts/Poppins/Poppins-Bold.ttf");
-}
+
+
+
