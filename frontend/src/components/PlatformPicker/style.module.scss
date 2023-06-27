@@ -1,0 +1,38 @@
+@import "../../config/style.config.scss";
+
+
+.platformPicker{
+    margin-top: 2em;
+    width: 100%;
+}
+.header{
+    font-size: 18px;
+}
+.container{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    gap: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    .platformPicker{
+        margin-top: 2em;
+        width: 100%;
+    }
+    .header{
+        font-size: 18px;
+    }
+    .container{
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        
+        gap: 10px;
+    }
+}

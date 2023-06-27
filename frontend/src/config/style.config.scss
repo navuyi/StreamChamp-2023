@@ -22,7 +22,7 @@
 
 $color-primary: #6C5DD3;
 $color-secondary: #FFCE73;
-$color-white: #FFFFFF;
+$color-white: #FEFEFE;
 $color-dark: #1B1D21;
 
 $font-poppins-light: poppins-light;
@@ -35,6 +35,8 @@ $font-poppins-bold: poppins-bold;
     width: 100%;
     min-height: 100vh;
     margin: 0;
+
+    padding: 2em 0;
 
     background-color: $color-dark;
     font-family: $font-poppins-regular;
