@@ -1,4 +1,4 @@
-import Navbar from "../../components/Navbar/Navbar"
+
 import style from "./style.module.scss"
 
 
@@ -6,7 +6,6 @@ const Landing = () => {
 
   return(
     <div className={style.landing}> 
-      <Navbar />
       <div className={style.container}>
         <header className={style.header}>Welcome to <span>StreamChamp</span> - a streamer spotlight application </header>
         <span className={style.text}>
