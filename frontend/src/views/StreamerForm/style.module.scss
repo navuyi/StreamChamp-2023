@@ -1,0 +1,31 @@
+@import "../../config/style.config.scss";
+
+.createStreamer{
+    @include full-viewport;
+    font-family: $font-poppins-medium;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 20%;
+
+    gap: 5px;
+}
+
+.header{
+    font-size: 24px;
+    text-align: left;
+    width: 100%;
+
+    margin-bottom: 10px;
+}
