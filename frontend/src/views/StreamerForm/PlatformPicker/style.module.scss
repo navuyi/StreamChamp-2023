@@ -1,26 +1,36 @@
 @import "../../../config/style.config.scss";
 
-
 .platformPicker{
     margin-top: 2em;
     width: 100%;
 }
 .header{
     font-size: 18px;
+    font-family: $font-poppins-regular;
 }
 .container{
     width: 100%;
     margin-top: 10px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    
-    gap: 20px;
+    gap: 5px;
 }
 
-@media screen and (max-width: 1200px) {
-    .container{
-        justify-content: flex-start;
-        gap: 10px;
-    }
+
+// Media queries
+@media all and (min-width: $breakpoint-phone){
+
+}
+
+@media all and (min-width: $breakpoint-tablet){
+  
+}
+
+@media all and (min-width: $breakpoint-laptop){
+   
+}
+
+@media all and (min-width: $breakpoint-desktop){
+  
 }

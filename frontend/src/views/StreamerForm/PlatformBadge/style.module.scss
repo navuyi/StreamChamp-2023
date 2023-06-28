@@ -30,3 +30,27 @@
     font-family: $font-poppins-regular;
     color: $color-dark;
 }
+
+
+// Media queries
+@media all and (min-width: $breakpoint-phone){
+
+}
+
+@media all and (min-width: $breakpoint-tablet){
+    .container{
+        width: 60%;
+    }
+}
+
+@media all and (min-width: $breakpoint-laptop){
+    .container{
+        width: 50%;
+    }
+}
+
+@media all and (min-width: $breakpoint-desktop){
+    .container{
+        width: 30%;
+    }
+}

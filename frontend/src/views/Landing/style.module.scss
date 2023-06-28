@@ -16,12 +16,14 @@
     align-items: center;
     justify-content: center;
 
-    width: 30%;
+    box-sizing: border-box;
+    padding: 0 1em;
     gap: 20px;
 }
 .header {
     font-size: 24px;
     text-align: center;
+    font-family: $font-poppins-regular;
     span {
       color: $color-primary;
     }
@@ -29,11 +31,26 @@
 .text{
     font-size: 18px;
     text-align: center;
+    font-family: $font-poppins-light;
 }
 
+// Media queries
+@media all and (min-width: $breakpoint-phone){
 
-@media screen and (max-width: 1200px) {
+}
+
+@media all and (min-width: $breakpoint-tablet){
+
+}
+
+@media all and (min-width: $breakpoint-laptop){
     .container{
-        width: 90%;
+        width: 50%;
+    }
+}
+
+@media all and (min-width: $breakpoint-desktop){
+    .container{
+        width: 50%;
     }
 }

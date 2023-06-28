@@ -1,14 +1,24 @@
 @import "../../../config/style.config.scss";
 
 .submitButton{
-    background-color: $color-primary;
+    background-color:  $color-primary;
 
     outline: none;
     border: none;
+    cursor: pointer;    
 
     margin-top: 2em;
 
     width: 100%;
 
-    
+    color: $color-white;
+    font-size: 18px;
+    font-family: $font-poppins-regular;
+
+    border-radius: 5px;
+    padding: 10px 0;
+
+    &:hover{
+        filter: brightness(0.9)
+    }
 }
