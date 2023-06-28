@@ -2,7 +2,8 @@ import TextInput from "../../components/TextInput/TextInput"
 import { useAppSelector } from "../../redux/store"
 import style from "./style.module.scss"
 import { useStreamerForm } from "./useStreamerForm"
-import PlatformPicker from "../../components/PlatformPicker/PlatformPicker"
+import PlatformPicker from "./PlatformPicker/PlatformPicker"
+import SubmitButton from "./SubmitButton/SubmitButton"
 
 const StreamerForm= () => {
     const form = useAppSelector(state => state.streamerForm)
@@ -17,6 +18,7 @@ const StreamerForm= () => {
                 <TextInput label="Last Name" value={form.lastName} _key={"lastName"} handleChange={handleFormTextFieldChange}/>
                 <TextInput label="Description" textarea={true} value={form.description} _key={"description"} handleChange={handleFormTextFieldChange}/>
                 <PlatformPicker />
+                <SubmitButton handleSubmit={async () =>{}}/>
             </div>
         </div>
     )
