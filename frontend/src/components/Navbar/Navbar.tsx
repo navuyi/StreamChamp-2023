@@ -15,9 +15,6 @@ const Navbar = () => {
                     <NavButton to="/streamer/search" label="Search streamers" />
                 </div>
             </div>
-            <div className={style.container}>
-                {/*TODO Signin Signup buttons*/}
-            </div>
         </div>
     )
 }

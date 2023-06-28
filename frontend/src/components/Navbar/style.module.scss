@@ -10,18 +10,11 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 0 3em;
+    padding: 0 1em;
     box-sizing: border-box;
-
-    font-family: $font-poppins-regular;
 }
 .navButtonWrapper{
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-left: 2em;
+    display: none;
 }
 .container{
     height: 100%;
@@ -33,10 +26,28 @@
     font-size: 24px;
     color: white;
     margin-left: 2em;
+
+    font-family: $font-poppins-regular;
 }
 
-@media screen and (max-width: 600px) {
+
+// Media queries
+@media all and (min-width: $breakpoint-phone){
+
+}
+
+@media all and (min-width: $breakpoint-tablet){
+
+}
+
+@media all and (min-width: $breakpoint-laptop){
     .navButtonWrapper{
-        display: none;
+        height: 100%;
+        display: flex;
+        margin-left: 2em;
     }
+}
+
+@media all and (min-width: $breakpoint-desktop){
+    
 }
