@@ -43,6 +43,11 @@ $font-poppins-bold: poppins-bold;
     font-size: 18px;
 }
 
+$breakpoint-phone: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 992px;
+$breakpoint-desktop: 1200px;
+
 :global{
    
 }
