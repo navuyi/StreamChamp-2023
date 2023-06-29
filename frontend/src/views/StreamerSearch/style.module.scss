@@ -8,15 +8,12 @@
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
 }
 .container{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    padding: 0 1em;
+    box-sizing: border-box;
 }
 .header{
     font-size: 24px;
@@ -35,25 +32,46 @@
 
 .wrapper{
     margin: 2em 0;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    
 }
 
 .recentlyAddedContainer{
     width: 100%;
+    overflow-y: auto;
     display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-
-    gap: 5px;
+    gap: 10px;
 }
 
 
-@media screen and (max-width: 1000px) {
-    .container{
-        width: 90%;
+@media all and (min-width: $breakpoint-phone){
+
+}
+
+@media all and (min-width: $breakpoint-tablet){
+   
+}
+
+@media all and (min-width: $breakpoint-laptop){
+    .streamerSearch{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-    
+    .container{
+        width: 80%;
+    }
+    .recentlyAddedContainer{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+}
+
+@media all and (min-width: $breakpoint-desktop){
+    .container{
+        width: 50%;
+    }
 }

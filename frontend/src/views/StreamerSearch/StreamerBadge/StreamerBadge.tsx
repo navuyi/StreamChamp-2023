@@ -1,7 +1,8 @@
 import style from "./style.module.scss"
 import picture from "../../../assets/icons/piture.png"
+import Votes, { voteProps } from "../Votes/Votes"
 
-type props = {
+interface props extends voteProps{
     type: "recent" | "item"
     nickname: string
     upvotes: number
@@ -16,16 +17,7 @@ const StreamerBadge = (props:props) => {
             <img className={style.profilePicture} src={picture}  alt=""/>
             <div className={style.wrapper}>
                 <span className={style.nickname}>{props.nickname}</span>
-                <div className={style.votesContainer}>
-                    <div className={style.votesSubContainer}>
-                        <button>Up</button>
-                        <span className={style.counter}>{props.upvotes}</span>
-                    </div>
-                    <div className={style.votesSubContainer}>
-                        <span className={style.counter}>{props.downvotes}</span>
-                        <button>Down</button>
-                    </div>
-                </div>
+                <Votes upvotes={props.upvotes} downvotes={props.downvotes} vote={props.vote}/>
             </div>
         </div>
     )
