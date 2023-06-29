@@ -43,7 +43,9 @@
 }
 
 @media all and (min-width: $breakpoint-laptop){
-   
+    .votes{
+        min-width: 170px;
+    }
 }
 
 @media all and (min-width: $breakpoint-desktop){
