@@ -68,7 +68,11 @@
 }
 
 @media all and (min-width: $breakpoint-laptop){
-   
+   .streamerBadge{
+        &:hover{
+            background-color: $color-primary;
+        }
+   }
 }
 
 @media all and (min-width: $breakpoint-desktop){
