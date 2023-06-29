@@ -19,6 +19,10 @@
 .arrow {
     width: 20px;
 
+    &:hover > *{
+        filter: brightness(0.8);
+    }
+
     &[data-active=true] > *{
         fill: $color-secondary;
         width: 100px;
