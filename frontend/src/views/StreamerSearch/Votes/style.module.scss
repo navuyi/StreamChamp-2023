@@ -1,0 +1,27 @@
+@import "../../../config/style.config.scss";
+
+
+
+.votes{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.votesSubcontainer{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.counter{
+    font-size: 14px;
+    font-family: $font-poppins-light;
+}
+.arrow {
+    width: 20px;
+
+    &[data-active=true] > *{
+        fill: $color-secondary;
+        width: 100px;
+    }
+}
+
