@@ -51,9 +51,30 @@
 }
 
 
-.stremerBadge[data-type="item"]{
+.streamerBadge[data-type="list"]{
+    flex-direction: row;
+    align-items: last baseline;
+    justify-content: flex-start;
+    border: none;
+    padding: 5px;
+    
+    
     .wrapper{
-        // change direction to row
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0;
+
+        margin-left: 1em;
+    }
+    .nickname{
+        text-align: left;
+        font-size: 18px;
+    }
+    
+    .votesContainer{
+        align-self: flex-end;
     }
 }
 
@@ -72,7 +93,7 @@
         &:hover{
             background-color: $color-primary;
         }
-   }
+   } 
 }
 
 @media all and (min-width: $breakpoint-desktop){

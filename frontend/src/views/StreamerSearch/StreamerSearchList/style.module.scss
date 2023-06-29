@@ -1,0 +1,49 @@
+@import "../../../config/style.config.scss";
+
+
+.streamerSearchList{
+
+}
+.controlSection{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.listSection{
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+
+@media all and (min-width: $breakpoint-phone){
+
+}
+
+@media all and (min-width: $breakpoint-tablet){
+    .controlSection{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .controlWrapper{
+        width: 40%;
+    }
+}
+
+@media all and (min-width: $breakpoint-laptop){
+    .controlSection{
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .controlWrapper{
+        width: 30%;
+    }
+}
+
+@media all and (min-width: $breakpoint-desktop){
+   .controlSection{
+    gap: 1em;
+   }
+}

@@ -1,4 +1,5 @@
 import StreamerBadge from "./StreamerBadge/StreamerBadge"
+import StreamerSearchList from "./StreamerSearchList/StreamerSearchList"
 import style from "./style.module.scss"
 
 
@@ -15,10 +16,12 @@ const StreamerSearch = () => {
                         <StreamerBadge type="recent" nickname="xqc" upvotes={22} downvotes={12} vote={null}/>
                         <StreamerBadge type="recent" nickname="forsen" upvotes={52} downvotes={31} vote={"upvote"}/>
                         <StreamerBadge type="recent" nickname="xqc" upvotes={22} downvotes={12} vote={null}/>
+                        <StreamerBadge type="recent" nickname="xqc" upvotes={22} downvotes={12} vote={null}/>
                     </div>
                 </div>
                 <div className={style.wrapper}>
                     <span className={style.subHeader}>Search</span>
+                    <StreamerSearchList />
                 </div>
             </div>
         </div>

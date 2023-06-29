@@ -30,3 +30,21 @@ textarea{
 .input:focus{
     border-color: $color-primary;
 }
+
+
+
+@media all and (min-width: $breakpoint-phone){
+
+}
+
+@media all and (min-width: $breakpoint-tablet){
+    
+}
+
+@media all and (min-width: $breakpoint-laptop){
+  
+}
+
+@media all and (min-width: $breakpoint-desktop){
+   
+}

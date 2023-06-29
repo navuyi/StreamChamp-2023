@@ -1,5 +1,4 @@
 
-import { StreamerFormTextAttributes } from "../../redux/features/streamerFormSlice"
 import style from "./style.module.scss"
 
 
@@ -7,9 +6,9 @@ type props = {
     label: string
     placeholder?: string
     value: string
-    _key: StreamerFormTextAttributes
+    _key: string
     textarea? : boolean
-    handleChange: (key:StreamerFormTextAttributes, value:string) => void
+    handleChange: (key:string, value:string) => void
 }
 
 const TextInput = (props:props) => {
