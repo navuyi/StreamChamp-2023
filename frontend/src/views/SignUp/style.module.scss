@@ -1,0 +1,76 @@
+@import "../../config/style.config.scss";
+
+.signUp{
+    @include full-viewport;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 1em 1em;
+    box-sizing: border-box;
+
+    span{
+        color: $color-primary;
+    }
+}
+.section{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    margin: 2em 0
+}
+
+.header{
+    color: $color-white;
+    font-size: 24px;
+    text-align: center;
+}
+.button{
+    width: 100%;
+    border: none; outline:none;
+
+    color: $color-white;
+    background-color: $color-primary;
+    font-family: $font-poppins-regular;
+    font-size: 18px;
+    border-radius: 5px;
+
+    padding: 5px 0;
+    cursor: pointer;
+
+    &:hover{
+        filter: brightness(0.9);
+    }
+}
+
+// Media queries
+@media all and (min-width: $breakpoint-phone){
+
+}
+
+@media all and (min-width: $breakpoint-tablet){
+    .container{
+        width: 80%;
+    }
+    .header{
+        width: 100%;
+        text-align: left;
+    }
+}
+
+@media all and (min-width: $breakpoint-laptop){
+    .header{
+        text-align: center;
+    }
+    .container{
+        width: 40%;
+    }
+}
+
+@media all and (min-width: $breakpoint-desktop){
+   
+    .container{
+        width: 20%;
+    }
+}
