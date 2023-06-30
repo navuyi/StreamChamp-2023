@@ -18,10 +18,10 @@ const StreamerSearchList = () => {
                 </div>
             </section>
             <section className={style.listSection}>
-               <StreamerBadge upvotes={10} downvotes={12} vote={"upvote"} nickname="forsen" type="list"/>
-               <StreamerBadge upvotes={10} downvotes={12} vote={"upvote"} nickname="forsen" type="list"/>
-               <StreamerBadge upvotes={10} downvotes={12} vote={"upvote"} nickname="forsen" type="list"/>
-               <StreamerBadge upvotes={10} downvotes={12} vote={"upvote"} nickname="forsen" type="list"/>
+               <StreamerBadge upvotes={1033} downvotes={12} vote={"upvote"} nickname="forsen" type="list"/>
+               <StreamerBadge upvotes={1440} downvotes={12} vote={"upvote"} nickname="forsen" type="list"/>
+               <StreamerBadge upvotes={10} downvotes={1255} vote={"upvote"} nickname="forsen" type="list"/>
+               <StreamerBadge upvotes={1055} downvotes={1552} vote={"upvote"} nickname="forsen" type="list"/>
             </section>
         </div>
     )
