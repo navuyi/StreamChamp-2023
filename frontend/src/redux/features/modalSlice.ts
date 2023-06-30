@@ -16,7 +16,7 @@ export interface modal {
 }
 
 const initialState : modal = {
-    type: "info",
+    type: "signin",
     visible: true,
     header: "This is a test modal",
     text: "Sint sunt reprehenderit ad dolore tempor. Reprehenderit officia cupidatat eu cillum."

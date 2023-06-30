@@ -1,7 +1,7 @@
 @import "../../../config/style.config.scss";
 
 
-.infoModal{
+.signinModal{
     width: 100%;
     position: fixed;
     top: 0;
@@ -39,9 +39,23 @@
         font-family: $font-poppins-regular;
     }
     text{
-        font-size: 16px;
+        font-size: 15px;
         font-family: $font-poppins-light;
         text-align: center;
+    }
+    span{
+        font-size: 15px;
+        font-family: $font-poppins-light;
+        text-align: center;
+    }
+    .link{
+        color: $color-secondary;
+        font-family: $font-poppins-regular;
+
+        cursor: pointer;
+        &:hover{
+            filter: brightness(0.9);
+        }
     }
     button{
         border: 2px solid $color-white;
