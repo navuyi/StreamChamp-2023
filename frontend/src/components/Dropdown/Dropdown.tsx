@@ -2,11 +2,13 @@ import { useEffect, useState } from "react"
 import style from "./style.module.scss"
 import { useNavigate } from "react-router"
 import { useRef } from "react"
+import { useAppSelector } from "../../redux/store"
 
 const Dropdown = () => {
     const [active, setActive] = useState<boolean>(false)
     const navigate = useNavigate()
     const dropdownRef = useRef<HTMLDivElement | null>(null)
+    const {signedIn} = useAppSelector(state => state.auth)
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -38,10 +40,16 @@ const Dropdown = () => {
             <div className={style.button} onClick={handleDropdownOpen}></div>
             <div className={style.content} data-active={active} onMouseLeave={() => setActive(false)}>
                 <a data-dest={"/"} onClick={(e) => handleNavigate(e.currentTarget.dataset.dest!)}>Home</a>
-                <a data-dest={"/streamer/create"} onClick={(e) => handleNavigate(e.currentTarget.dataset.dest!)}>Add streamer</a>
+                {
+                  signedIn ? <a data-dest={"/streamer/create"} onClick={(e) => handleNavigate(e.currentTarget.dataset.dest!)}>Add streamer</a> : null
+                }
                 <a data-dest={"/streamer/search"} onClick={(e) => handleNavigate(e.currentTarget.dataset.dest!)}>Search streamers</a>
-                <a data-dest={"/auth/signin"} onClick={(e) => handleNavigate(e.currentTarget.dataset.dest!)}>Sign In</a>
-                <a data-dest={"/auth/signup"} onClick={(e) => handleNavigate(e.currentTarget.dataset.dest!)}>Sign Up</a>
+                {
+                  !signedIn ? <>
+                    <a data-dest={"/auth/signin"} onClick={(e) => handleNavigate(e.currentTarget.dataset.dest!)}>Sign In</a>
+                    <a data-dest={"/auth/signup"} onClick={(e) => handleNavigate(e.currentTarget.dataset.dest!)}>Sign Up</a>
+                  </> : null
+                }
             </div>
         </div>
     )

@@ -6,16 +6,26 @@ import StreamerSearch from "./views/StreamerSearch/StreamerSearch";
 import StreamerDetails from "./views/StreamerDetails/StreamerDetails";
 import SignIn from "./views/SignIn/SignIn";
 import SignUp from "./views/SignUp/SignUp";
+import { useEffect } from "react";
+import { useAppDispatch } from "./redux/store";
+import { setSignedIn } from "./redux/features/authSlice";
+import ProtectedRoute from "./utils/ProtectedRoute";
 const App = () => {
+  const dispatch = useAppDispatch()
 
-  
+  useEffect(() => {
+    const jwt = localStorage.getItem("token")
+    if(!jwt) dispatch(setSignedIn(false));
+    else dispatch(setSignedIn(true))
+  }, [])
+
   return (
     <> 
       <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/streamer/create" element={<StreamerForm />} />
+          <Route path="/streamer/create" element={<ProtectedRoute path="/streamer/create" component={StreamerForm}/>} />
           <Route path="/streamer/search" element={<StreamerSearch />} />
           <Route path="/streamer/:id" element={<StreamerDetails />} />
 

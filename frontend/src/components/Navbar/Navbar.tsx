@@ -1,9 +1,12 @@
 
+import { useAppSelector } from "../../redux/store"
 import Dropdown from "../Dropdown/Dropdown"
 import NavButton from "./NavButton/NavButton"
 import style from "./style.module.scss"
 
 const Navbar = () => {
+    const {signedIn} = useAppSelector(state => state.auth)
+
     return(
         <div className={style.navbar}>
             <section className={style.navSection}> 
@@ -13,13 +16,19 @@ const Navbar = () => {
             <section className={style.navButtonSection}>
                 <section className={style.navSection}> 
                     <NavButton to="/" label="Home" />
-                    <NavButton to="/streamer/create" label="Add streamer" />
+                    {
+                        signedIn ? <NavButton to="/streamer/create" label="Add streamer" /> : null
+                    }
                     <NavButton to="/streamer/search" label="Search streamers" />
                 </section>
-                <section className={style.navSection}> 
-                    <NavButton to="/auth/signin" label="Sign In" />
-                    <NavButton to="/auth/signup" label="Sign Up" />
-                </section>
+                {
+                    !signedIn ? 
+                    <section className={style.navSection}> 
+                        <NavButton to="/auth/signin" label="Sign In" />
+                        <NavButton to="/auth/signup" label="Sign Up" />
+                    </section> : null
+                }
+                
             </section>
         </div>
     )

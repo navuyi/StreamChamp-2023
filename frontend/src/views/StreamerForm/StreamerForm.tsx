@@ -5,7 +5,7 @@ import { useStreamerForm } from "./useStreamerForm"
 import PlatformPicker from "./PlatformPicker/PlatformPicker"
 import SubmitButton from "./SubmitButton/SubmitButton"
 
-const StreamerForm= () => {
+const StreamerForm = () => {
     const form = useAppSelector(state => state.streamerForm)
     const {handleFormTextFieldChange} = useStreamerForm()
 
