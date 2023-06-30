@@ -1,0 +1,66 @@
+@import "../../config/style.config.scss";
+
+
+
+.signIn{
+    @include full-viewport;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1em 1em;
+    box-sizing: border-box;
+    height: 100%;
+
+    header{
+        font-size: 22px;
+        color: $color-white;
+        margin: 1em 0;
+    }
+
+    section{
+        display: flex;
+        flex-direction: column;
+
+        align-items: flex-start;
+        gap: 10px
+    }
+    button{
+        width: 100%;
+        margin-top: 2em;
+        border: none; outline:none;
+
+        color: $color-white;
+        background-color: $color-primary;
+        font-family: $font-poppins-regular;
+        font-size: 18px;
+        border-radius: 5px;
+
+        padding: 5px 0;
+    }
+}
+
+// Media queries
+@media all and (min-width: $breakpoint-phone){
+
+}
+
+@media all and (min-width: $breakpoint-tablet){
+    .signIn{
+        align-items: center;
+    }
+    .container{
+        width: 50%;
+    }
+}
+
+@media all and (min-width: $breakpoint-laptop){
+    .container{
+        width: 30%;
+    }
+}
+
+@media all and (min-width: $breakpoint-desktop){
+    .container{
+        width: 20%;
+    }
+}
