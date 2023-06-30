@@ -16,7 +16,7 @@ export interface modal {
 }
 
 const initialState : modal = {
-    type: "signin",
+    type: null,
     visible: true,
     header: "This is a test modal",
     text: "Sint sunt reprehenderit ad dolore tempor. Reprehenderit officia cupidatat eu cillum."
@@ -26,6 +26,12 @@ export const ModalSlice = createSlice({
     name: "Modal",
     initialState,
     reducers: {
+        setModal: (state, action: PayloadAction<modal>) => {
+            state.header = action.payload.header
+            state.text = action.payload.text
+            state.type = action.payload.type
+            state.visible = action.payload.visible
+        },
         setModalType: (state, action: PayloadAction<modalType>) => {
             state.type = action.payload
         },
@@ -43,5 +49,5 @@ export const ModalSlice = createSlice({
 
 
 export default ModalSlice.reducer
-export const {setModalVisible, setModalHeader, setModalText, setModalType} = ModalSlice.actions
+export const {setModalVisible, setModalHeader, setModalText, setModalType, setModal} = ModalSlice.actions
 

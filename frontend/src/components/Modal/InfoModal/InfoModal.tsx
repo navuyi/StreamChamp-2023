@@ -13,7 +13,7 @@ const InfoModal = (props:modalComponentProps) => {
         <div className={style.infoModal}>
             <section className={style.section}>
                 <header>{props.header}</header>
-                <text>{props.text}</text>
+                <span>{props.text}</span>
                 <button onClick={handleClose}>Continue</button>
             </section>
         </div>

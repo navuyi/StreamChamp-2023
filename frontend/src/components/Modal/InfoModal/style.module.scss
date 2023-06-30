@@ -26,7 +26,10 @@
     max-height: 100vh;
     overflow-y: auto;
     padding: 1em;
+    box-sizing: border-box;
     border-radius: 5px;
+
+    width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -37,8 +40,9 @@
     header{
         font-size: 24px;
         font-family: $font-poppins-regular;
+        text-align: center;
     }
-    text{
+    span{
         font-size: 16px;
         font-family: $font-poppins-light;
         text-align: center;
@@ -85,7 +89,7 @@
     .section{
         width: 30%;
 
-        text{
+        span{
             width: 60%;
         }
     }

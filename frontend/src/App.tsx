@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "./redux/store";
 import { setSignedIn } from "./redux/features/authSlice";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import Modal from "./components/Modal";
 const App = () => {
   const dispatch = useAppDispatch()
 
@@ -23,6 +24,7 @@ const App = () => {
     <> 
       <BrowserRouter>
         <Navbar />
+        <Modal />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/streamer/create" element={<ProtectedRoute path="/streamer/create" component={StreamerForm}/>} />
