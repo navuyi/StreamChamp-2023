@@ -1,0 +1,93 @@
+@import "../../../config/style.config.scss";
+
+
+.infoModal{
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    background-color: rgba(22,22,22,0.8);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 2;
+    padding: 0 1em;
+    box-sizing: border-box;
+}
+
+.section{
+    background-color: rgba($color-primary, 0.85);
+    color: $color-white;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 1em;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1em;
+
+    header{
+        font-size: 24px;
+        font-family: $font-poppins-regular;
+    }
+    text{
+        font-size: 16px;
+        font-family: $font-poppins-light;
+        text-align: center;
+    }
+    button{
+        border: 2px solid $color-white;
+        outline: none;
+        
+
+        color: $color-white;
+        font-family: $font-poppins-regular;
+        font-size: 14px;
+        border-radius: 5px;
+        padding: 0.5em 3em;
+        cursor: pointer;
+
+        background-color: rgba(1,1,1,0);
+        transition: 200ms;
+
+        &:hover{
+            background-color: $color-secondary;
+            border-color: $color-secondary;
+        }
+        &:active{
+            transition: 1ms;
+            filter: brightness(0.9);
+        }
+    }
+}
+
+
+
+@media all and (min-width: $breakpoint-phone){
+
+}
+
+@media all and (min-width: $breakpoint-tablet){
+    .section{
+        width: 60%;
+    }
+}
+
+@media all and (min-width: $breakpoint-laptop){
+    .section{
+        width: 30%;
+
+        text{
+            width: 60%;
+        }
+    }
+}
+
+@media all and (min-width: $breakpoint-desktop){
+   
+}

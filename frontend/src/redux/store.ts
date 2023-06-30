@@ -3,12 +3,14 @@ import { StreamerFormSlice } from "./features/streamerFormSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { StreamerSearchParamsSlice } from "./features/streamerSearchParams";
 import { AuthSlice } from "./features/authSlice";
+import { ModalSlice } from "./features/modalSlice";
 
 export const store = configureStore({
     reducer: {
         streamerForm: StreamerFormSlice.reducer,
         searchParams: StreamerSearchParamsSlice.reducer,
-        auth: AuthSlice.reducer
+        auth: AuthSlice.reducer,
+        modal: ModalSlice.reducer
     }
 })
 
