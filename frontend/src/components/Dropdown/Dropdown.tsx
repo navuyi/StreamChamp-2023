@@ -3,12 +3,15 @@ import style from "./style.module.scss"
 import { useNavigate } from "react-router"
 import { useRef } from "react"
 import { useAppSelector } from "../../redux/store"
+import { useSignIn } from "../../views/SignIn/useSignIn"
+import { useSignOut } from "../../hooks/useSignOut"
 
 const Dropdown = () => {
     const [active, setActive] = useState<boolean>(false)
     const navigate = useNavigate()
     const dropdownRef = useRef<HTMLDivElement | null>(null)
     const {signedIn} = useAppSelector(state => state.auth)
+    const {signOut} = useSignOut()
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -49,6 +52,12 @@ const Dropdown = () => {
                     <a data-dest={"/auth/signin"} onClick={(e) => handleNavigate(e.currentTarget.dataset.dest!)}>Sign In</a>
                     <a data-dest={"/auth/signup"} onClick={(e) => handleNavigate(e.currentTarget.dataset.dest!)}>Sign Up</a>
                   </> : null
+                }
+                {
+                  signedIn ?  <a data-dest={"/"} onClick={(e) => {
+                    signOut()
+                    handleNavigate(e.currentTarget.dataset.dest!)
+                  }}>Sign Out</a> : null
                 }
             </div>
         </div>

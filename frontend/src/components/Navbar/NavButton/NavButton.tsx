@@ -6,6 +6,7 @@ import { useLocation } from "react-router"
 type props = {
     to: string
     label: string
+    onClick?: () => void
 }
 const NavButton = (props:props) => {
     const navigate = useNavigate()
@@ -14,6 +15,9 @@ const NavButton = (props:props) => {
     const isActive = location.pathname === props.to
 
     const handleClick = () => {
+        if(props.onClick){
+            props.onClick()
+        }
         navigate(props.to)
     }
 

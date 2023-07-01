@@ -1,4 +1,5 @@
 
+import { useSignOut } from "../../hooks/useSignOut"
 import { useAppSelector } from "../../redux/store"
 import Dropdown from "../Dropdown/Dropdown"
 import NavButton from "./NavButton/NavButton"
@@ -6,6 +7,7 @@ import style from "./style.module.scss"
 
 const Navbar = () => {
     const {signedIn} = useAppSelector(state => state.auth)
+    const {signOut} = useSignOut()
 
     return(
         <div className={style.navbar}>
@@ -28,7 +30,12 @@ const Navbar = () => {
                         <NavButton to="/auth/signup" label="Sign Up" />
                     </section> : null
                 }
-                
+                {
+                    signedIn ? 
+                    <section className={style.navSection}> 
+                        <NavButton to="/" label="Sign out" onClick={signOut}/>
+                    </section> : null
+                }
             </section>
         </div>
     )
