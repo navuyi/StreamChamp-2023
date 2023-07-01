@@ -3,12 +3,6 @@
 
 .streamerSearch{
     @include full-viewport;
-    font-family: $font-poppins-medium;
-    color: white;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 }
 .container{
     width: 100%;
@@ -17,17 +11,10 @@
 }
 .header{
     font-size: 24px;
-    text-align: left;
-    width: 100%;
+    text-align: center;
     font-family: $font-poppins-medium;
     margin-bottom: 10px;
-}
-.subHeader{
-    font-size: 20px;
-    text-align: left;
-    width: 100%;
-    font-family: $font-poppins-regular;
-    margin-bottom: 10px;
+    color: $color-white;
 }
 
 .wrapper{
