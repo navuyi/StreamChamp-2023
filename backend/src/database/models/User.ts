@@ -27,8 +27,5 @@ User.init({
     password: {type: DataTypes.STRING, allowNull: false}
 }, {sequelize: db, tableName: "User", modelName: 'User'})
 
-User.afterSync(async () => {
-    process.env.NODE_ENV === "test" ? null : seeder.up()
-})
 
 

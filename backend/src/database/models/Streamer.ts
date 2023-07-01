@@ -38,7 +38,3 @@ Streamer.init({
     platform: {type: DataTypes.STRING, allowNull: false},
     profilePicturePath: {type: DataTypes.STRING, allowNull: true, defaultValue: null}
 }, {sequelize: db, tableName: "Streamer", modelName: 'Streamer'})
-
-Streamer.afterSync(async () => {
-    process.env.NODE_ENV === "test" ? null : seeder.up()
-})
