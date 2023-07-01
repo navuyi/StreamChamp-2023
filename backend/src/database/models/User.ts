@@ -1,6 +1,6 @@
 import { DataTypes, InferAttributes, InferCreationAttributes, Model, NOW } from "sequelize";
 import db from "../config";
-import { Optional } from "sequelize";
+import seeder from "../seeders/userSeeder"
 
 
 export interface IUser {
@@ -27,6 +27,8 @@ User.init({
     password: {type: DataTypes.STRING, allowNull: false}
 }, {sequelize: db, tableName: "User", modelName: 'User'})
 
-
+User.afterSync(async () => {
+    process.env.NODE_ENV === "test" ? null : seeder.up()
+})
 
 

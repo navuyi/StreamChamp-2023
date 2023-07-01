@@ -7,3 +7,5 @@ export type GetStreamersResponseBody = {
     streamers: IStreamer[] 
     lastPage: number
 }
+
+export type GetStreamersSortParameter = "upvotes" | "downvotes" | "created" | null

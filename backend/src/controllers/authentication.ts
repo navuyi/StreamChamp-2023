@@ -7,6 +7,7 @@ import { User } from "../database/models/User"
 import * as bcrypt from "bcrypt"
 import * as jwt from "jsonwebtoken"
 import { CustomError } from "../utils/CustomError"
+import { SECRET_KEY } from "../config/secret"
 
 const signIn = async (req:Request, res:Response, next:NextFunction) => {
     const errors = validationResult(req)
@@ -22,7 +23,7 @@ const signIn = async (req:Request, res:Response, next:NextFunction) => {
             return next(new CustomError("Wrong password", 401))
         }
         
-        const token = jwt.sign({email: user.email, userID: user.id}, 'secret-key', {expiresIn: "1h"})
+        const token = jwt.sign({email: user.email, userID: user.id}, SECRET_KEY, {expiresIn: "12h"})
         res.status(200).json({
             token: token,
             userID: user.id

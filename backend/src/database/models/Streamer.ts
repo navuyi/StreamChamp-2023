@@ -1,6 +1,6 @@
 import { DataTypes, Model, NOW } from "sequelize";
 import db from "../config";
-import seeder from "../../seeders/streamerSeeder";
+import seeder from "../seeders/streamerSeeder";
 import * as process from "process"
 
 export interface IStreamer {

@@ -6,7 +6,7 @@ import { Application } from "express"
 import * as http from "http"
 import db from "./database/config"
 
-import urlRouter from "./routes/url"
+import voteRouter from "./routes/vote"
 import streamerRouter from "./routes/streamer"
 import authRouter from "./routes/authentication"
 import { CustomError } from "./utils/CustomError"
@@ -24,16 +24,16 @@ export class App {
 
         // Cors
         this.app.use(cors({
-            origin: ["TODO"]
+            origin: ["http://localhost:5173"]
         }))
         // Request body parser
         this.app.use(express.json())
 
 
         // Endpoints
-        this.app.use("/yt", urlRouter)
         this.app.use("/streamers", streamerRouter)
         this.app.use("/auth/", authRouter)
+        this.app.use("/vote", voteRouter)
         // ... 
         // ...
 
