@@ -1,5 +1,5 @@
-export type PostVoteRequestBody = {
-    value: boolean
+export type PutVoteRequestBody = {
+    value: boolean | null
     userID: number
     streamerID: number
 }
