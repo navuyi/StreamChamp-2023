@@ -3,7 +3,7 @@ import TextInput from "../../../components/TextInput/TextInput"
 import StreamerBadge from "../StreamerBadge/StreamerBadge"
 import style from "./style.module.scss"
 import { useAppSelector } from "../../../redux/store"
-import { useStreamerList } from "../hooks/useStreamerList"
+import { useStreamerList } from "./useStreamerList"
 
 const StreamerSearchList = () => {
     const {list} = useAppSelector(state => state.streamers)
@@ -23,10 +23,17 @@ const StreamerSearchList = () => {
                     */
                 }
             </section>
+            <section className={style.listNavigation}>
+                <button disabled={currentPage===1} onClick={()=>handlePageChange("prev")}>Previous</button>
+                <span>{currentPage} out of {lastPage}</span>
+                <button disabled={currentPage===lastPage} onClick={()=>handlePageChange("next")}>Next</button>
+            </section>
             <section className={style.listSection}>
                {
                 list.map((s, index) => {
-                    return <StreamerBadge key={index} upvotes={s.upvotes} downvotes={s.downvotes} vote={null} nickname={s.nickname} type="list"/>
+                    return <StreamerBadge key={index} upvotes={s.upvotes} streamerID={s.id}
+                        downvotes={s.downvotes} nickname={s.nickname} value={s.voteValue}
+                    />
                 })
                }
             </section>

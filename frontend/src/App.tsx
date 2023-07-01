@@ -7,7 +7,7 @@ import StreamerDetails from "./views/StreamerDetails/StreamerDetails";
 import SignIn from "./views/SignIn/SignIn";
 import SignUp from "./views/SignUp/SignUp";
 import { useEffect } from "react";
-import { useAppDispatch } from "./redux/store";
+import { useAppDispatch, useAppSelector } from "./redux/store";
 import { AuthSlice, setSignedIn } from "./redux/features/authSlice";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import Modal from "./components/Modal";
@@ -17,7 +17,7 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem("token")
     if(!token) dispatch(setSignedIn(false));
-    else dispatch(AuthSlice.actions.setSignedIn(false))
+    else dispatch(AuthSlice.actions.setSignedIn(true))
   }, [])
 
   return (
