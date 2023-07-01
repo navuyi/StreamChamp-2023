@@ -1,8 +1,8 @@
 import { useState } from "react"
-import axios, { AxiosError } from "axios"
+import axios from "axios"
 import { endpoints } from "../../config/requests"
 import { useAppDispatch } from "../../redux/store"
-import { setModal, setModalHeader, setModalText, setModalType, setModalVisible } from "../../redux/features/modalSlice"
+import { setModal } from "../../redux/features/modalSlice"
 import { useNavigate } from "react-router"
 import { setSignedIn } from "../../redux/features/authSlice"
 

@@ -1,5 +1,3 @@
-import Select from "../../../components/Select/Select"
-import TextInput from "../../../components/TextInput/TextInput"
 import StreamerBadge from "../StreamerBadge/StreamerBadge"
 import style from "./style.module.scss"
 import { useAppSelector } from "../../../redux/store"

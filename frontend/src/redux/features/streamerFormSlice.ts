@@ -1,5 +1,5 @@
 import {CreateStreamerRequestBody} from "@backend/types/streamer.type"
-import { Action, createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 import { PayloadAction } from "@reduxjs/toolkit"
 
 export interface StreamerFormState extends CreateStreamerRequestBody {}

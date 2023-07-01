@@ -1,5 +1,4 @@
-import { useDispatch } from "react-redux"
-import { StreamerFormTextAttributes, setDefault, setNickname, setTextProperty } from "../../redux/features/streamerFormSlice"
+import { setDefault, setNickname, setTextProperty } from "../../redux/features/streamerFormSlice"
 import axios from "axios"
 import { endpoints } from "../../config/requests"
 import { useAppDispatch, useAppSelector } from "../../redux/store"

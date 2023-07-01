@@ -1,6 +1,6 @@
-import { MouseEvent, useEffect } from "react"
+import { MouseEvent} from "react"
 import { useAppDispatch, useAppSelector } from "../../../redux/store"
-import modalSlice, { ModalSlice } from "../../../redux/features/modalSlice"
+import { ModalSlice } from "../../../redux/features/modalSlice"
 import { setList } from "../../../redux/features/streamersSlice"
 import axios from "axios"
 import { endpoints } from "../../../config/requests"
@@ -12,7 +12,6 @@ export const useVote = () => {
     const {list} = useAppSelector(state=>state.streamers)
     const dispatch = useAppDispatch()
     
-
     const handleVote = async (e:MouseEvent<SVGSVGElement>, streamerID:number, oldValue:number|null, newValue:number) => {
         e.stopPropagation()
         
@@ -45,6 +44,7 @@ export const useVote = () => {
             if(newValue === 1) updateStreamer(streamerID, 1, -1, 1)
             else updateStreamer(streamerID, 0, -1, null)
         }
+
         try{
             const res = await axios.put(endpoints.vote.put, data, {headers})
             if(res.status !== 200){
@@ -62,19 +62,18 @@ export const useVote = () => {
     }
 
     const updateStreamer = (streamerID:number, up:number, down: number, voteValue:number | null) => {
-        const tmp = [...list]
-        console.log(tmp)
-        const streamer = tmp.find(s => s.id === streamerID)
-        const index = tmp.indexOf(streamer!)
-       
-        tmp[index] = {
-            ...tmp[index],
-            upvotes: tmp[index].upvotes + up,
-            downvotes: tmp[index].downvotes + down,
-            voteValue: voteValue
-        }
-    
-        dispatch(setList(tmp));
+        const updatedList = list.map((streamer) => {
+            if (streamer.id === streamerID) {
+                return {
+                    ...streamer,
+                    upvotes: streamer.upvotes + up,
+                    downvotes: streamer.downvotes + down,
+                    voteValue: voteValue,
+                };
+            }
+            return streamer;
+        })
+        dispatch(setList(updatedList));
     }
 
     return {

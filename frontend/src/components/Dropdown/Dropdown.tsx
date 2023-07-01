@@ -3,7 +3,6 @@ import style from "./style.module.scss"
 import { useNavigate } from "react-router"
 import { useRef } from "react"
 import { useAppSelector } from "../../redux/store"
-import { useSignIn } from "../../views/SignIn/useSignIn"
 import { useSignOut } from "../../hooks/useSignOut"
 
 const Dropdown = () => {
