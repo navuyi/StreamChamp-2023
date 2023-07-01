@@ -4,6 +4,7 @@ import * as process from "process"
 
 import { Application } from "express"
 import * as http from "http"
+import * as io from "socket.io"
 import db from "./database/config"
 
 import voteRouter from "./routes/vote"
@@ -13,9 +14,11 @@ import { CustomError } from "./utils/CustomError"
 import { Request, Response, NextFunction } from "express"
 import { ErrorResponseBody } from "./types/common"
 
+
 export class App {
     private app: Application | null = null
     private server: http.Server | null = null
+    private io : io.Server | null = null
 
     public init = async () : Promise<Application> => {
         this.app = express()
@@ -51,7 +54,10 @@ export class App {
         this.server = this.app.listen(PORT, () => {
             console.log(`Listening on ${PORT}`);
         });
-        
+        this.io = new io.Server(this.server)
+        this.io.on('connection', () => {
+            console.log("Hello world")
+        })
         return this.app
     }
 

@@ -14,7 +14,7 @@ export const verifyJWT = (req:Request, res:Response, next:NextFunction) => {
         const decoded = jwt.verify(token, SECRET_KEY) as {userID: number, email:string}
         next()
     }catch(error){
-        throw new CustomError(error.message, 500)
+        throw new CustomError(error.message, 401)
     }
 }
 
