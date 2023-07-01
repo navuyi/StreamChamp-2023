@@ -16,6 +16,35 @@
     gap: 5px;
 }
 
+.listNavigation{
+    margin-top: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button{
+        min-width: 30%;
+        outline: none;
+        border: none;
+
+        background-color: $color-primary;
+        color: $color-white;
+        border-radius: 5px;
+        padding: 1em 15px;
+        user-select: none;
+        cursor: pointer;
+
+        &:hover{
+            filter: brightness(0.9);
+        }
+    }
+
+    button[disabled]{
+        pointer-events: none;
+        filter: brightness(0.5);
+    }
+}
 
 
 @media all and (min-width: $breakpoint-phone){
@@ -43,7 +72,7 @@
 }
 
 @media all and (min-width: $breakpoint-desktop){
-   .controlSection{
-    gap: 1em;
-   }
+    .controlSection{
+        gap: 1em;
+    }
 }

@@ -7,7 +7,7 @@ import SubmitButton from "./SubmitButton/SubmitButton"
 
 const StreamerForm = () => {
     const form = useAppSelector(state => state.streamerForm)
-    const {handleFormTextFieldChange} = useStreamerForm()
+    const {handleFormTextFieldChange, handleSubmit} = useStreamerForm()
 
     return(
         <div className={style.streamerForm}>
@@ -18,7 +18,7 @@ const StreamerForm = () => {
                 <TextInput label="Last Name" value={form.lastName} _key={"lastName"} handleChange={handleFormTextFieldChange}/>
                 <TextInput label="Description" textarea={true} value={form.description} _key={"description"} handleChange={handleFormTextFieldChange}/>
                 <PlatformPicker />
-                <SubmitButton handleSubmit={async () =>{}}/>
+                <SubmitButton handleSubmit={handleSubmit}/>
             </div>
         </div>
     )

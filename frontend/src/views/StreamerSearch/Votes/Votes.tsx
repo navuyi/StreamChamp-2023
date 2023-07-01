@@ -3,6 +3,8 @@ import style from "./style.module.scss"
 import {ReactComponent as UpvoteArrow} from "../../../assets/icons/upvote.svg"
 import {ReactComponent as DownvoteArrow} from "../../../assets/icons/downvote.svg"
 import { MouseEvent } from "react"
+import { useAppDispatch, useAppSelector } from "../../../redux/store"
+import modalSlice, { setModal } from "../../../redux/features/modalSlice"
 
 export interface voteProps {
     upvotes: number
@@ -11,10 +13,21 @@ export interface voteProps {
 }
 
 const Votes = (props:voteProps) => {
+    const {signedIn} = useAppSelector(state => state.auth)
+    const dispatch = useAppDispatch()
 
     const handleClick = (e:MouseEvent<SVGSVGElement>) => {
         e.stopPropagation() 
-        console.log("Vote Arrow clicked")
+        if(signedIn === false){
+            dispatch(setModal({
+                header: "Account required",
+                text: "This feature is available only to members",
+                type: "signin",
+                visible: true
+            }))
+        }else{
+            // TODO perform proper logic of vote
+        }
     }
 
     const parseVotes = (value:number) => {

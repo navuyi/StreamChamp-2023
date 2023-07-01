@@ -1,9 +1,14 @@
+import { useAppSelector } from "../../redux/store"
 import StreamerBadge from "./StreamerBadge/StreamerBadge"
 import StreamerSearchList from "./StreamerSearchList/StreamerSearchList"
+import { useRecentStreamers } from "./hooks/useRecentStreamers"
 import style from "./style.module.scss"
 
 
+
 const StreamerSearch = () => {
+    const {recent} = useAppSelector(state => state.streamers)
+    const {} = useRecentStreamers()
 
     return(
         <div className={style.streamerSearch}>
@@ -12,9 +17,14 @@ const StreamerSearch = () => {
                 <div className={style.wrapper}>
                     <span className={style.subHeader}>Recently added</span>
                     <div className={style.recentlyAddedContainer}>
-                        <StreamerBadge type="recent" nickname="horsensen" upvotes={1232} downvotes={1} vote={"downvote"}/>
-                        <StreamerBadge type="recent" nickname="xqc" upvotes={224342} downvotes={1232} vote={null}/>
-                        <StreamerBadge type="recent" nickname="forsen" upvotes={52} downvotes={331} vote={"upvote"}/>
+                        {
+                            recent.map((item, index) => {
+                                return <StreamerBadge key={index} type="recent" 
+                                    nickname={item.nickname} upvotes={item.upvotes} 
+                                    downvotes={item.downvotes} vote={null} 
+                                />
+                            })
+                        }
                     </div>
                 </div>
                 <div className={style.wrapper}>

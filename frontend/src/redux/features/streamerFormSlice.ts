@@ -1,5 +1,5 @@
 import {CreateStreamerRequestBody} from "@backend/types/streamer.type"
-import { createSlice } from "@reduxjs/toolkit"
+import { Action, createSlice } from "@reduxjs/toolkit"
 import { PayloadAction } from "@reduxjs/toolkit"
 
 export interface StreamerFormState extends CreateStreamerRequestBody {}
@@ -17,9 +17,12 @@ export const StreamerFormSlice = createSlice({
     name: "StreamerForm",
     initialState,
     reducers: {
-        setTextProperty: (state, action: PayloadAction<{key:StreamerFormTextAttributes, value:string}>) => {
+        setTextProperty: (state, action: PayloadAction<{key:string, value:string}>) => {
             const { key, value } = action.payload;
-            state[key] = value
+            state[key as StreamerFormTextAttributes] = value
+        },
+        setDefault: () => {
+            return initialState
         },
         setNickname: (state, action: PayloadAction<{value: string}>) => {
             state.nickname = action.payload.value
@@ -40,4 +43,4 @@ export const StreamerFormSlice = createSlice({
 })
 
 export default StreamerFormSlice.reducer
-export const {setTextProperty,setNickname,setDescription,setLastName,setPlatform,setFirstName}=StreamerFormSlice.actions
+export const {setTextProperty,setNickname,setDescription,setLastName,setPlatform,setFirstName, setDefault}=StreamerFormSlice.actions

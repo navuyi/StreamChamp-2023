@@ -8,7 +8,7 @@ export interface auth {
 }
 
 const initialState : auth = {
-    signedIn: false
+    signedIn: true
 }
 
 export const AuthSlice = createSlice({

@@ -8,16 +8,16 @@ import SignIn from "./views/SignIn/SignIn";
 import SignUp from "./views/SignUp/SignUp";
 import { useEffect } from "react";
 import { useAppDispatch } from "./redux/store";
-import { setSignedIn } from "./redux/features/authSlice";
+import { AuthSlice, setSignedIn } from "./redux/features/authSlice";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import Modal from "./components/Modal";
 const App = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    const jwt = localStorage.getItem("token")
-    if(!jwt) dispatch(setSignedIn(false));
-    else dispatch(setSignedIn(true))
+    const token = localStorage.getItem("token")
+    if(!token) dispatch(setSignedIn(false));
+    else dispatch(AuthSlice.actions.setSignedIn(false))
   }, [])
 
   return (

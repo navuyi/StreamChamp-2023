@@ -7,7 +7,7 @@ type props = {
 const SubmitButton = (props:props) => {
 
     return(
-        <button className={style.submitButton}>
+        <button className={style.submitButton} onClick={props.handleSubmit}>
             Submit
         </button>
     )
