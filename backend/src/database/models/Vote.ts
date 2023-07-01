@@ -6,21 +6,21 @@ import seeder from "../seeders/voteSeeder"
 
 export interface IVote {
     id: number
-    value: boolean
+    value: number
     userID: number
     streamerID: number
 }
 
 export class Vote extends Model<IVote>{
     declare id: number
-    declare value: boolean
+    declare value: number
     declare userID: number
     declare streamerID: number
 }
 
 Vote.init({
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    value: {type: DataTypes.BOOLEAN, allowNull: false},
+    value: {type: DataTypes.INTEGER, allowNull: false, validate: {isIn: [[-1, 1]]}},
     userID: {type: DataTypes.INTEGER, allowNull: false},
     streamerID: {type: DataTypes.INTEGER, allowNull: false}
 }, {sequelize: db, tableName: "Vote", modelName: 'Vote'})

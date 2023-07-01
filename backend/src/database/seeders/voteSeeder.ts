@@ -1,5 +1,6 @@
 
 import * as bcrypt from "bcrypt"
+
 import { Vote } from "../models/Vote"
 
 import streamerSeeder from "./streamerSeeder"
@@ -10,17 +11,17 @@ const up = async () => {
     await streamerSeeder.up()
 
     const vote1 = {
-        value: true,
+        value: 1,
         userID: 1,
         streamerID: 1
     }
     const vote2 = {
-        value: true,
+        value: 1,
         userID: 1,
         streamerID: 2
     }
     const vote3 = {
-        value: true,
+        value:-1,
         userID: 1,
         streamerID: 3
     }

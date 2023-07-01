@@ -5,7 +5,6 @@ import { Request } from "express"
 import { Response } from "express"
 import { PutVoteRequestBody } from "../types/vote.type"
 import { Vote } from "../database/models/Vote"
-import { where } from "sequelize"
 import { Streamer } from "../database/models/Streamer"
 
 const putVote = async (req:Request, res:Response, next:NextFunction) => {
@@ -26,39 +25,39 @@ const putVote = async (req:Request, res:Response, next:NextFunction) => {
                 streamerID: data.streamerID,
                 value: data.value
             })
-            if(data.value === true){
+            if(data.value === 1){
                 await Streamer.increment("upvotes", {by: 1, where: {id: data.streamerID}})
             }
-            else{
+            else if(data.value === -1){
                 await Streamer.increment("downvotes", {by: 1, where: {id: data.streamerID}})
             }            
         }else{
             // Vote already exists
             const oldValue = vote.value
             const newValue = data.value
-            if(oldValue === true){
-                if(newValue === true){
+            if(oldValue === 1){
+                if(newValue === 1){
                     // Remove vote
                     await Vote.destroy({where: {id: vote.id}})
                     // streamer.upvotes --
                     await Streamer.decrement("upvotes", {by: 1, where: {id: data.streamerID}})
-                }else{
+                }else if(newValue === -1){
                     // Change vote to false
-                    await Vote.update({value: false}, {where: {id: vote.id}})
+                    await Vote.update({value: -1}, {where: {id: vote.id}})
                     // streamer.upvotes --
                     await Streamer.decrement("upvotes", {by: 1, where: {id: data.streamerID}})
                     // streamer.downvotes ++
                     await Streamer.increment("downvotes", {by: 1, where: {id: data.streamerID}})
                 }
-            }else if(oldValue === false){
-                if(newValue === true){    
+            }else if(oldValue === -1){
+                if(newValue === 1){    
                     // Change vote to true
-                    await Vote.update({value: true}, {where: {id: vote.id}})
+                    await Vote.update({value: 1}, {where: {id: vote.id}})
                     // streamer.upvotes ++
                     await Streamer.increment("upvotes", {by: 1, where: {id: data.streamerID}})
                     // streamer.downvotes --
                     await Streamer.decrement("downvotes", {by: 1, where: {id: data.streamerID}})
-                }else{
+                }else if(newValue === -1){
                     // Remove vote
                     await Vote.destroy({where: {id: vote.id}})
                     // streamer.downvotes --

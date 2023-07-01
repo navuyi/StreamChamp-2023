@@ -27,8 +27,8 @@ const up = async () => {
             nickname: nicknames[i],
             platform: [platforms[Math.floor(Math.random()*platforms.length)]],
             description: descriptions[Math.floor(Math.random()*descriptions.length)],
-            upvotes: Math.floor(Math.random()*50000),
-            downvotes: Math.floor(Math.random()*50000)
+            upvotes: Math.floor(Math.random()*100),
+            downvotes: Math.floor(Math.random()*50)
         })  
     }
 
