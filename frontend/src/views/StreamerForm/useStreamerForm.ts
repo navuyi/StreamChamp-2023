@@ -21,7 +21,10 @@ export const useStreamerForm = () => {
 
     const handleSubmit = async () => {
         try{
-            const res = await axios.post(endpoints.streamer.post, form)
+            const headers = {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+            const res = await axios.post(endpoints.streamer.post, form, {headers})
             if(res.status === 201){
                 dispatch(setModal({
                     header: "New streamer created!",

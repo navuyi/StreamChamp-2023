@@ -2,8 +2,11 @@ import { body, param } from "express-validator"
 import { Sequelize } from "sequelize";
 import { Streamer } from "../database/models/Streamer";
 import { AvailableStreamingPlatforms, StreamingPlatform } from "../types/streamer.type";
+import { validationResult } from "express-validator";
+import { Request, Response, NextFunction } from "express";
+import { CustomError } from "../utils/CustomError";
 
-export const createStreamerValidator = [
+export const postStreamerValidator = [
     body("nickname").trim().notEmpty().withMessage("Nickname is required"),
     body("firstName").trim().notEmpty().withMessage("First name is required"),
     body("lastName").trim().notEmpty().withMessage("First name is required"),
@@ -29,6 +32,14 @@ export const createStreamerValidator = [
         return true
     }).withMessage("Streamer with provided nickname already exists")   
 ]
+
+export const handleValidationErrors = (req: Request, res: Response, next: NextFunction) => {
+    const validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty()) {
+      return next(new CustomError("Validation error", 400))
+    }
+    next();
+};
 
 export const getStreamerValidator =[
     param("id").trim().notEmpty().isInt().withMessage("Streamer ID is incorrect")
