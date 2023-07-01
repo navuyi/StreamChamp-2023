@@ -1,5 +1,5 @@
+
 export type PutVoteRequestBody = {
-    value: -1 | 1
-    userID: number
+    value: number
     streamerID: number
 }

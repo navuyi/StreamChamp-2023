@@ -23,11 +23,6 @@ const StreamerSearchList = () => {
                     */
                 }
             </section>
-            <section className={style.listNavigation}>
-                <button disabled={currentPage===1} onClick={()=>handlePageChange("prev")}>Previous</button>
-                <span>{currentPage} out of {lastPage}</span>
-                <button disabled={currentPage===lastPage} onClick={()=>handlePageChange("next")}>Next</button>
-            </section>
             <section className={style.listSection}>
                {
                 list.map((s, index) => {

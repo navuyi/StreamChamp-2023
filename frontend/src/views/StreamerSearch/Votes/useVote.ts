@@ -2,7 +2,9 @@ import { MouseEvent, useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../../../redux/store"
 import modalSlice, { ModalSlice } from "../../../redux/features/modalSlice"
 import { setList } from "../../../redux/features/streamersSlice"
-
+import axios from "axios"
+import { endpoints } from "../../../config/requests"
+import {PutVoteRequestBody} from "@backend/types/vote.type"
 
 
 export const useVote = () => {
@@ -11,7 +13,7 @@ export const useVote = () => {
     const dispatch = useAppDispatch()
     
 
-    const handleVote = (e:MouseEvent<SVGSVGElement>, streamerID:number, oldValue:number|null, newValue:number) => {
+    const handleVote = async (e:MouseEvent<SVGSVGElement>, streamerID:number, oldValue:number|null, newValue:number) => {
         e.stopPropagation()
         
         if(signedIn === false){
@@ -22,14 +24,20 @@ export const useVote = () => {
             ))
             return
         }
+
+        const data : PutVoteRequestBody = {
+            value: newValue,
+            streamerID: streamerID
+        }
+
+        const headers = {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
         if(oldValue == null){
-            console.log("ASDasd")
-            // Send request
             if(newValue === 1)  updateStreamer(streamerID, 1, 0, 1)
             else updateStreamer(streamerID, 0, 1, -1)
         }
         else if(oldValue === 1){
-            // Send request
             if(newValue === 1) updateStreamer(streamerID, -1, 0, null)
             else updateStreamer(streamerID, -1, 1, -1)
         }
@@ -37,6 +45,20 @@ export const useVote = () => {
             if(newValue === 1) updateStreamer(streamerID, 1, -1, 1)
             else updateStreamer(streamerID, 0, -1, null)
         }
+        try{
+            const res = await axios.put(endpoints.vote.put, data, {headers})
+            if(res.status !== 200){
+               throw new Error("Could not save your vote.")
+            }
+        }
+        catch(err){
+            dispatch(ModalSlice.actions.setModal({
+                type: "info",
+                header: "Your vote could not be saved!",
+                text: "There might be a problem with your Internet connection or our server and as a result your vote has not been saved.",
+                visible: true
+            }))
+        }        
     }
 
     const updateStreamer = (streamerID:number, up:number, down: number, voteValue:number | null) => {

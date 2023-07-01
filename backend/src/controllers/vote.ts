@@ -6,6 +6,7 @@ import { Response } from "express"
 import { PutVoteRequestBody } from "../types/vote.type"
 import { Vote } from "../database/models/Vote"
 import { Streamer } from "../database/models/Streamer"
+import { getUserIDFromJWT } from "../utils/getUserFromJWT"
 
 const putVote = async (req:Request, res:Response, next:NextFunction) => {
     const errors = validationResult(req)
@@ -13,15 +14,20 @@ const putVote = async (req:Request, res:Response, next:NextFunction) => {
         return next(new CustomError("Parameters incorrect", 400, errors.array()))
     }
     try{
+        const userID = getUserIDFromJWT(req)
+        console.log(userID)
+        if(!userID){
+            return next(new CustomError("Unauthorized", 401))
+        }
         const data : PutVoteRequestBody = req.body
         const vote = await Vote.findOne({
-            where: {userID: data.userID, streamerID: data.streamerID}
+            where: {userID: userID, streamerID: data.streamerID}
         })
        
         if(!vote){
             // Vote from the user on the streamer does not exist
             await Vote.create({
-                userID: data.userID,
+                userID: userID,
                 streamerID: data.streamerID,
                 value: data.value
             })

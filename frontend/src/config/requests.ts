@@ -8,6 +8,9 @@ export const endpoints = {
         getMultiple: (page:number) => `${SERVER_BASE}/streamers/page/${page}`,
         getSingle: (id:number) => `${SERVER_BASE}/streamers/${id}`,
         getRecent: `${SERVER_BASE}/streamers/recent`
+    },
+    vote: {
+        put: `${SERVER_BASE}/vote/`
     }
     //...more
 }
