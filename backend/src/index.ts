@@ -13,6 +13,7 @@ import authRouter from "./routes/authentication"
 import { CustomError } from "./utils/CustomError"
 import { Request, Response, NextFunction } from "express"
 import { ErrorResponseBody } from "./types/common"
+import { initSocket } from "./socket"
 
 
 export class App {
@@ -27,7 +28,7 @@ export class App {
 
         // Cors
         this.app.use(cors({
-            origin: ["http://localhost:5173"]
+            origin: ["http://localhost:5173", "http://localhost:8000"]
         }))
         // Request body parser
         this.app.use(express.json())
@@ -54,9 +55,9 @@ export class App {
         this.server = this.app.listen(PORT, () => {
             console.log(`Listening on ${PORT}`);
         });
-        this.io = new io.Server(this.server)
-        this.io.on('connection', () => {
-            console.log("Hello world")
+        this.io = initSocket(this.server)
+        this.io.on('connection', socket => {
+            console.log("Client connected")
         })
         return this.app
     }
