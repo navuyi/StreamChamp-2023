@@ -17,6 +17,28 @@
 
     gap: 10px;
 }
+.platformContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+    margin: 1em 0;
+    gap: 20px;
+
+    .platform{
+        background-color: $color-primary;
+        padding: 5px 15px;
+        border-radius: 5px;
+
+        cursor: pointer;
+        user-select: none;
+
+        &:hover{
+            filter: brightness(0.9)
+        }
+    }
+}
 .section{
     width: 100%;
     color: white;
