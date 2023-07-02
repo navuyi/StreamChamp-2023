@@ -54,6 +54,17 @@ Javascript (Typescript) was used in both frontend and backend
     - SQLite3 (database)
     - Sequelize (ORM)
 
+## How to start project?
+This repository contains both frontend and backend for the application.
+- To start server:
+    - cd into `/backend` directory and run `npm install` to install dependencies
+    - run `npm start` in order to start server in development mode
+
+- To start frontend app
+    - cd into `/frontend` and run `npm install` to install dependencies
+    - run `npm run dev` in order to start app in development mode and enter address (printed in console) in browser
+
+<b>NOTE</b> By default backend runs on `localhost:8080` and frontend dev server on `localhost:5173`
 
 
 
