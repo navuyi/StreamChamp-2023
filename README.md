@@ -7,7 +7,7 @@ The application offers different features based on user roles. Some features are
 
 ## Features
 ### Sign-in and Registration
-Users can create an account by completing a simple sign-up form. This allows them to access additional features and personalize their experience on the platform.
+Users can create an account by completing a simple sign-up form. This allows them to access additional features.
 <div style="display: flex; justify-content: space-between;">
   <img src="./assets/signin.png" style="width: 45%;" />
   <img src="./assets/signup.png" style="width: 45%;" />
@@ -17,8 +17,9 @@ Users can create an account by completing a simple sign-up form. This allows the
 ### Streamer Search
 The application provides a view where users can search and browse through available streamers. The view includes a pagination mechanism to navigate through the streamer list efficiently. Users can also see the upvote and downvote count for each streamer and cast their own vote if they are signed in.
 <div style="display: flex; justify-content: space-between;">
-    <img src="./assets/streamerSearch.png" style="width: 45%;" />
-    <img src="./assets/streamerSearchVotes.png" style="width: 45%;" />
+    <img src="./assets/streamerSearch.png" style="width: 30%;" />
+    <img src="./assets/streamerSearchVotes.png" style="width: 30%;" />
+    <img src="./assets/voteNotAllowed.png" style="width: 30%;" />
 </div>
 
 
