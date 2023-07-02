@@ -33,7 +33,6 @@ The "Add Streamer" page is exclusively for signed-in users to contribute new str
 <img src="./assets/streamerCreate.png" />
 
 ### Vote tracking
-Vote Tracking:
 The application enables registered users to participate in the voting process for streamers. Each user has the option to upvote, downvote, or abstain from voting for a particular streamer. 
 
 ### Live updates
