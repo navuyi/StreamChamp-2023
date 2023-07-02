@@ -14,7 +14,7 @@ export const useVote = () => {
     
     const handleVote = async (e:MouseEvent<SVGSVGElement>, streamerID:number, oldValue:number|null, newValue:number) => {
         e.stopPropagation()
-        
+        console.log("Voting")
         if(signedIn === false){
             // Voting only for users with account
             dispatch(ModalSlice.actions.setModal({
@@ -28,7 +28,7 @@ export const useVote = () => {
             value: newValue,
             streamerID: streamerID
         }
-
+        console.log(oldValue)
         const headers = {
             Authorization: `Bearer ${localStorage.getItem("token")}`
         }

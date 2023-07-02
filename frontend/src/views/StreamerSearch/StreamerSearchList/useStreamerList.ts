@@ -5,48 +5,30 @@ import axios from "axios"
 import { StreamersSlice} from "../../../redux/features/streamersSlice"
 import io from "socket.io-client"
 import { useRef } from "react"
+import { useSocket } from "../../../hooks/useSocket"
 
 export const useStreamerList = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [lastPage, setLastPage] = useState<number|null>(null)
 
     const dispatch = useAppDispatch()
-    const {list} = useAppSelector(state => state.streamers)
-    const listRef = useRef(list); // Create a mutable reference
-
-    useEffect(() => {
-        fetchStreamers();
-        const socket = io(SERVER_BASE);
-      
-        socket.on("vote", (data) => {
-            const tmp = [...listRef.current];
-            const streamerInList = tmp.find((s) => s.id === data.streamer.id)
-            if(streamerInList) {
-                const index = tmp.indexOf(streamerInList)
-                tmp[index] = {
-                    ...tmp[index],
-                    upvotes: data.streamer.upvotes,
-                    downvotes: data.streamer.downvotes,
-                };
-                dispatch(StreamersSlice.actions.setList(tmp));
-          }
-        });
-      
-        return () => {
-          console.log("Disconnecting...");
-          socket.disconnect();
-        };
-      }, []);
-
-    // Update the mutable reference when list changes
-    useEffect(() => {
-        listRef.current = list;
-    }, [list]);
+    const {handleNewVote} = useSocket()
+   
 
     useEffect(() => {
         fetchStreamers()
     }, [currentPage])
 
+    useEffect(() => {
+        fetchStreamers();
+        const socket = io(SERVER_BASE);
+        socket.on("vote", (data) => handleNewVote(data));
+      
+        return () => {
+          console.log("Disconnecting...");
+          socket.disconnect();
+        };
+    }, []);
 
     const fetchStreamers = async () => {
         const headers = {

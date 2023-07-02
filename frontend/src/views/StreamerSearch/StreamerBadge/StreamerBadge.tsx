@@ -1,15 +1,17 @@
 import style from "./style.module.scss"
 import picture from "../../../assets/icons/piture.png"
 import Votes, { voteProps } from "../Votes/Votes"
+import { useNavigate } from "react-router"
 
 interface props extends voteProps{
     nickname: string
 }
 
 const StreamerBadge = (props:props) => {
+    const navigate = useNavigate()
 
     const handleClick = () => {
-        // TODO redirect to details page
+        navigate(`/streamer/${props.streamerID}`)
     }
 
     return(
