@@ -5,6 +5,7 @@ import { PayloadAction } from "@reduxjs/toolkit"
 
 export interface streamer extends IStreamer {
     voteValue: number | null
+    new?: boolean
 }
 
 export interface streamers {

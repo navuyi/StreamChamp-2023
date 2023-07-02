@@ -22,10 +22,20 @@ export const useSocket = () => {
                 downvotes: data.streamer.downvotes,
             };
             dispatch(StreamersSlice.actions.setList(tmp));
-      }
+        }
+    }
+
+    const handleNewStreamer = (data:any) => {
+        const tmp = [...listRef.current];
+        tmp.push({
+            ...data,
+            new: true
+        })
+        dispatch(StreamersSlice.actions.setList(tmp))
     }
 
     return {
-        handleNewVote
+        handleNewVote,
+        handleNewStreamer
     }
 }

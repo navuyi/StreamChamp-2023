@@ -12,7 +12,7 @@ export const useStreamerList = () => {
     const [lastPage, setLastPage] = useState<number|null>(null)
 
     const dispatch = useAppDispatch()
-    const {handleNewVote} = useSocket()
+    const {handleNewVote, handleNewStreamer} = useSocket()
    
 
     useEffect(() => {
@@ -22,8 +22,9 @@ export const useStreamerList = () => {
     useEffect(() => {
         fetchStreamers();
         const socket = io(SERVER_BASE);
-        socket.on("vote", (data) => handleNewVote(data));
-      
+        socket.on("vote", (data) => handleNewVote(data))
+        socket.on("streamer", (data) => handleNewStreamer(data))
+
         return () => {
           console.log("Disconnecting...");
           socket.disconnect();

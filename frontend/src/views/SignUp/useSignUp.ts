@@ -46,7 +46,6 @@ export const useSignUp = () => {
             }
         }catch(err){
             if(axios.isAxiosError(err)){
-                console.log(err.response)
                 let details = ""
                 if(err.response?.data.data){
                     details = err.response.data.data[0].msg
