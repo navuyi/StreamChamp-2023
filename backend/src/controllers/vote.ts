@@ -61,7 +61,7 @@ const putVote = async (req:Request, res:Response, next:NextFunction) => {
         getSocket().emit("vote", {
             streamer: updatedStreamer
         })
-        res.status(200).json()
+        res.status(200).json({msg: "ok"})
     }catch(err){
         return next(new CustomError(err.message, 500))
     }

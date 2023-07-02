@@ -4,38 +4,38 @@ import { User } from "../database/models/User"
 
 
 export const signUpValidator = [
-    body("firstName").trim().notEmpty().withMessage("First name is required"),
-    body("lastName").trim().notEmpty().withMessage("Last name is required"),
+    body("firstName").trim().notEmpty().withMessage("First name is required."),
+    body("lastName").trim().notEmpty().withMessage("Last name is required."),
 
     // Validate password
-    body("password").trim().notEmpty().withMessage("Password is required"),
-    body("passwordRepeat").trim().notEmpty().withMessage("Repeated password is required"),
+    body("password").trim().notEmpty().withMessage("Password is required."),
+    body("passwordRepeat").trim().notEmpty().withMessage("Repeated password is required."),
     body("passwordRepeat").custom((value:string, {req}) => {
         if(value !== req.body.password){
-            throw new Error("Passwords do not match")
+            throw new Error("Passwords do not match.")
         }
         return true
-    }).withMessage("Passwords do not match"),
+    }).withMessage("Passwords do not match."),
     
     // Validate email
-    body("email").trim().notEmpty().withMessage("Email is required").isEmail().withMessage("Invalid email address")
+    body("email").trim().notEmpty().withMessage("Email is required.").isEmail().withMessage("Invalid email address.")
     .normalizeEmail().custom(async (value:string) => {
         const user = await User.findOne({where: {email: value.toLowerCase()}})
         if(user){
-            throw new Error("Account already exists")
+            throw new Error("Account already exists.")
         }
-    }).withMessage("Account already exists")
+    }).withMessage("Account already exists.")
 ]
 
 export const  signInValidator = [
-    body("email").trim().notEmpty().isEmail().withMessage("Email address is not valid or empty"),
-    body("password").trim().notEmpty().withMessage("Password is required"),
+    body("email").trim().notEmpty().isEmail().withMessage("Email address is not valid or empty."),
+    body("password").trim().notEmpty().withMessage("Password is required."),
 
     body("email").custom(async (value:string) => {
         const user = await User.findOne({where: {email: value}})
         if(!user){
-            throw new Error("Account with provided email does not exist")
+            throw new Error("Account with provided email does not exist.")
         }
         return true
-    }).withMessage("Account with provided email does not exist")
+    }).withMessage("Account with provided email does not exist.")
 ]

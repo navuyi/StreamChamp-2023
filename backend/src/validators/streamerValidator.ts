@@ -7,17 +7,17 @@ import { Request, Response, NextFunction } from "express";
 import { CustomError } from "../utils/CustomError";
 
 export const postStreamerValidator = [
-    body("nickname").trim().notEmpty().withMessage("Nickname is required"),
-    body("firstName").trim().notEmpty().withMessage("First name is required"),
-    body("lastName").trim().notEmpty().withMessage("First name is required"),
-    body("description").trim().notEmpty().withMessage("Description is required"),
-    body("description").isLength({max: 2048}).withMessage("Description must be shorter than 2048 characters"),
-    body("platform").isArray({min: 1}).withMessage("At least one streaming platform must be provided").custom((arr:string[]) => {
+    body("nickname").trim().notEmpty().withMessage("Nickname is required."),
+    body("firstName").trim().notEmpty().withMessage("First name is required."),
+    body("lastName").trim().notEmpty().withMessage("First name is required."),
+    body("description").trim().notEmpty().withMessage("Description is required."),
+    body("description").isLength({max: 2048}).withMessage("Description must be shorter than 2048 characters."),
+    body("platform").isArray({min: 1}).withMessage("At least one streaming platform must be provided.").custom((arr:string[]) => {
         if(arr.some(item => AvailableStreamingPlatforms.includes(item as StreamingPlatform) === false)){
-            throw new Error("Incorrect streaming platform")
+            throw new Error("Incorrect streaming platform.")
         } 
         return true
-    }).withMessage("Streaming platform is incorrect"),
+    }).withMessage("Streaming platform is incorrect."),
 
     body("nickname").custom(async (value:string) => {
         const foundStreamer = await Streamer.findOne({
@@ -27,25 +27,17 @@ export const postStreamerValidator = [
             )
         });
         if(foundStreamer != null){
-            throw new Error(`Streamer ${value} already exists`)
+            throw new Error(`Streamer ${value} already exists.`)
         }
         return true
-    }).withMessage("Streamer with provided nickname already exists")   
+    }).withMessage("Streamer with provided nickname already exists.")   
 ]
 
-export const handleValidationErrors = (req: Request, res: Response, next: NextFunction) => {
-    const validationErrors = validationResult(req);
-    if (!validationErrors.isEmpty()) {
-      return next(new CustomError("Validation error", 400))
-    }
-    next();
-};
-
 export const getStreamerValidator =[
-    param("id").trim().notEmpty().isInt().withMessage("Streamer ID is incorrect")
+    param("id").trim().notEmpty().isInt().withMessage("Streamer ID is incorrect.")
 ]
 
 export const getStreamersValidator = [
-    param("page").trim().notEmpty().isInt().withMessage("Page number is incorrect")
+    param("page").trim().notEmpty().isInt().withMessage("Page number is incorrect.")
 ]
 
