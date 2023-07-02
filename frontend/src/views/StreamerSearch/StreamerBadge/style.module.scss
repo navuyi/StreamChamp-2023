@@ -19,10 +19,15 @@
 
     cursor: pointer;
 
+    &[data-new=true]{
+        border: 2px solid $color-primary;
+    }
+
     &:active{
         background-color: $color-primary;
     }
 }
+
 .wrapper{
     width: 100%;
     display: flex;

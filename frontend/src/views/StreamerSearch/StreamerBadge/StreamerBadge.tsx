@@ -5,6 +5,7 @@ import { useNavigate } from "react-router"
 
 interface props extends voteProps{
     nickname: string
+    new?: boolean
 }
 
 const StreamerBadge = (props:props) => {
@@ -15,7 +16,7 @@ const StreamerBadge = (props:props) => {
     }
 
     return(
-        <div className={style.streamerBadge}  onClick={handleClick}>
+        <div className={style.streamerBadge}  onClick={handleClick} data-new={props.new}>
             <img className={style.profilePicture} src={picture}  alt=""/>
             <div className={style.wrapper}>
                 <span className={style.nickname}>{props.nickname}</span>

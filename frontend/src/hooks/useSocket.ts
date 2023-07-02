@@ -27,11 +27,8 @@ export const useSocket = () => {
 
     const handleNewStreamer = (data:any) => {
         const tmp = [...listRef.current];
-        tmp.push({
-            ...data,
-            new: true
-        })
-        dispatch(StreamersSlice.actions.setList(tmp))
+        const update = [{...data.streamer, new:true}].concat(tmp)
+        dispatch(StreamersSlice.actions.setList(update))
     }
 
     return {

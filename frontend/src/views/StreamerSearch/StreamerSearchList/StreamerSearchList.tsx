@@ -24,7 +24,7 @@ const StreamerSearchList = () => {
             <section className={style.listSection}>
                {
                 list.map((s, index) => {
-                    return <StreamerBadge key={index} upvotes={s.upvotes} streamerID={s.id}
+                    return <StreamerBadge key={index} upvotes={s.upvotes} streamerID={s.id} new={s.new}
                         downvotes={s.downvotes} nickname={s.nickname} value={s.voteValue}
                     />
                 })
