@@ -16,12 +16,20 @@ Users can create an account by completing a simple sign-up form. This allows the
 
 ### Streamer Search
 The application provides a view where users can search and browse through available streamers. The view includes a pagination mechanism to navigate through the streamer list efficiently. Users can also see the upvote and downvote count for each streamer and cast their own vote if they are signed in.
- 
+<div style="display: flex; justify-content: space-between;">
+    <img src="./assets/streamerSearch.png" style="width: 45%;" />
+    <img src="./assets/streamerSearchVotes.png" style="width: 45%;" />
+</div>
+
+
 ### Streamer Details
 Clicking on a streamer's badge in Streamer Search view opens a dedicated page with details about the streamer. Users can explore additional information, such as the streamer's nickname, description and streaming platform they use.
+<img src="./assets/streamerDetails.png" />
+
 
 ### Add Streamer
 The "Add Streamer" page is exclusively for signed-in users to contribute new streamers to the system. Users can fill out a form with the streamer's details, including their nickname, description, and streaming platforms. By submitting the form, the streamer will be added to the application, expanding the available options for other users to discover and evaluate.
+<img src="./assets/streamerCreate.png" />
 
 ### Vote tracking
 Vote Tracking:
