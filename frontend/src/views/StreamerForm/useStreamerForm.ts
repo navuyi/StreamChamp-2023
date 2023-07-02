@@ -35,13 +35,9 @@ export const useStreamerForm = () => {
             }
         }catch(err){
             if(axios.isAxiosError(err)){
-                let details = ""
-                if(err.response?.data.data){
-                    details = err.response.data.data[0].msg
-                }
                 dispatch(setModal({
                     header: "Could not create new streamer",
-                    text: err.response?.data.message + " " +details,
+                    text:  err.response ? err.response.data.message + " " + err.response.data.data[0].msg: err.message,
                     type: "info",
                     visible: true
                 }))

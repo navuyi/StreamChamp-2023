@@ -9,18 +9,6 @@ const StreamerSearchList = () => {
 
     return(
         <div className={style.streamerSearchList}>
-            <section className={style.controlSection}>
-                {
-                    /*
-                    <div className={style.controlWrapper}>
-                    <TextInput label="Filter" _key="search" handleChange={() => {}} value=""/>
-                    </div>
-                    <div className={style.controlWrapper}>
-                        <Select label="Sort" _key="sort" value="" options={[["By upvotes", "upvotes"], ["By downvotes", "downvotes"], ["Creation date", "created"]]}/>
-                    </div>
-                    */
-                }
-            </section>
             <section className={style.listSection}>
                {
                 list.map((s, index) => {
@@ -31,9 +19,14 @@ const StreamerSearchList = () => {
                }
             </section>
             <section className={style.listNavigation}>
-                <button disabled={currentPage===1} onClick={()=>handlePageChange("prev")}>Previous</button>
-                <span>{currentPage} out of {lastPage}</span>
-                <button disabled={currentPage===lastPage} onClick={()=>handlePageChange("next")}>Next</button>
+               {
+                list.length > 0 ?  
+                <>
+                    <button disabled={currentPage===1} onClick={()=>handlePageChange("prev")}>Previous</button>
+                    <span>{currentPage} out of {lastPage}</span>
+                    <button disabled={currentPage===lastPage} onClick={()=>handlePageChange("next")}>Next</button>
+                </> : null
+               }
             </section>
         </div>
     )

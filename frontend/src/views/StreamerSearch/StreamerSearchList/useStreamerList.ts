@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 import { useAppDispatch, useAppSelector} from "../../../redux/store"
 import { SERVER_BASE, endpoints } from "../../../config/requests"
-import axios from "axios"
+import axios, { isAxiosError } from "axios"
 import { StreamersSlice} from "../../../redux/features/streamersSlice"
 import io from "socket.io-client"
 import { useRef } from "react"
 import { useSocket } from "../../../hooks/useSocket"
+import { ModalSlice } from "../../../redux/features/modalSlice"
 
 export const useStreamerList = () => {
     const [currentPage, setCurrentPage] = useState(1)
@@ -35,10 +36,21 @@ export const useStreamerList = () => {
         const headers = {
             Authorization: `Bearer ${localStorage.getItem("token")}`
         }
-        const res = await axios.get(endpoints.streamer.getMultiple(currentPage), {headers})
-        if(res.status === 200){
-            setLastPage(res.data.lastPage)
-            dispatch(StreamersSlice.actions.setList(res.data.streamers))
+        try{
+            const res = await axios.get(endpoints.streamer.getMultiple(currentPage), {headers})
+            if(res.status === 200){
+                setLastPage(res.data.lastPage)
+                dispatch(StreamersSlice.actions.setList(res.data.streamers))
+            }
+        }catch(err){
+            if(isAxiosError(err)){
+                dispatch(ModalSlice.actions.setModal({
+                    header: "Could not fetch streamers",
+                    text: err.message,
+                    visible: true,
+                    type: "info"
+                }))
+            }
         }
     }
 
